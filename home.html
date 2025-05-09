@@ -1,0 +1,3239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrion Health</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #043e41;
+            --primary-light: #105e62;
+            --primary-dark: #032b2e;
+            --accent-color: #FF9900;
+            --purple-accent: #7A4E9D;
+            --text-color: #2A3B47;
+            --text-color-dark: #4a5a68;
+            --light-gray: #F4F7F9;
+            --medium-gray: #8898aa;
+            --border-color: #e6ebf1;
+            --white: #ffffff;
+            --highlight: #7a73ff;
+            --success: #3ECF8E;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            color: var(--text-color-dark);
+            background-color: var(--white);
+            -webkit-font-smoothing: antialiased;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* Header/Hero Section */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 150px 0 90px;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.35)), url('https://framerusercontent.com/images/5nj6dksKm16iJmj0f6SsPn5MxU.png');
+            background-size: cover;
+            background-position: center top;
+            color: var(--white);
+        }
+        
+        .hero:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-color);
+            display: block;
+        }
+        
+        .site-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            max-width: 100px;
+            height: auto;
+            filter: brightness(0) invert(1);
+        }
+        
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            position: relative;
+            z-index: 1;
+            max-width: 580px;
+            margin-left: 0;
+            margin-right: auto;
+            padding-left: 0;
+        }
+        
+        @media (min-width: 900px) {
+            .hero-content {
+                padding-left: 0;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .hero-content {
+                padding-left: 0;
+            }
+        }
+        
+        .hero-text {
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+        }
+        
+        .hero-headline {
+            font-size: 84px; /* Increased from 56px to 64px */
+            font-weight: 800; /* Increased from 700 to 800 */
+            line-height: 1.1;
+            color: var(--white);
+            margin-bottom: 24px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .hero-subheadline {
+            font-size: 20px; /* Decreased from 24px to 20px */
+            font-weight: 500;
+            line-height: 1.4; /* Adjusted from 1.3 to 1.4 */
+            color: var(--white);
+            margin-bottom: 30px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.5;
+            color: var(--white);
+            margin-bottom: 32px;
+            max-width: 600px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            padding: 16px 36px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #000000;
+            background-color: var(--accent-color);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+            margin-bottom: 30px;
+        }
+        
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            background-color: #ffad33;
+            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.3);
+        }
+        
+        .testimonial-banner {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            margin: 0 0 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .testimonial-banner-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 3px solid var(--accent-color);
+        }
+        
+        .testimonial-banner-content {
+            flex: 1;
+        }
+        
+        .testimonial-banner-text {
+            font-size: 18px;
+            line-height: 1.5;
+            color: var(--text-color-dark);
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+        
+        .testimonial-banner-name {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+        
+        .testimonial-banner-title {
+            font-size: 14px;
+            color: var(--medium-gray);
+        }
+        
+        .social-proof-bar {
+            background: linear-gradient(to right, var(--primary-dark), var(--primary-color), var(--primary-dark));
+            padding: 80px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .logos-container {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 40px 0;
+            margin: 40px auto;
+            max-width: 1000px;
+            padding: 0 20px;
+        }
+        
+        /* Top row logos */
+        .logos-container img:nth-child(-n+4) {
+            grid-column: span 2;
+        }
+        
+        /* Bottom row logos */
+        .logos-container img:nth-child(5) {
+            grid-column: 2 / span 2;
+        }
+        
+        .logos-container img:nth-child(6) {
+            grid-column: 4 / span 2;
+        }
+        
+        .logos-container img:nth-child(7) {
+            grid-column: 6 / span 2;
+        }
+        
+        .logos-container img:nth-last-child(-n+3) {
+            margin-top: 10px;
+        }
+        
+        .social-proof-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        
+        .logo-item {
+            height: 130px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+            padding: 15px;
+            border-radius: 12px;
+            background-color: transparent;
+            border: none;
+            justify-self: center;
+            width: auto;
+            object-fit: contain;
+            max-width: 90%;
+        }
+        
+        .logo-item:hover {
+            transform: scale(1.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            background-color: transparent;
+            border: none;
+            z-index: 10;
+            position: relative;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 90px 0;
+            background-color: var(--white);
+            text-align: center;
+            height: 480px; /* Further increased section height */
+            position: relative;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            height: 360px; /* Further increased container height */
+        }
+        
+        .testimonial-slide {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: left;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            margin: 0 auto;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: auto; /* Height based on content */
+            max-height: 100%; /* Don't exceed container */
+            overflow-y: auto; /* Scroll if needed */
+        }
+        
+        .testimonial-slide.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 3px solid var(--accent-color);
+        }
+        
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-title {
+            font-size: 14px;
+            color: var(--medium-gray);
+            line-height: 1.4;
+        }
+        
+        .testimonial-text {
+            font-size: 18px;
+            line-height: 1.5;
+            color: var(--text-color-dark);
+            font-style: italic;
+            margin-top: 8px;
+            overflow-y: visible;
+        }
+        
+        .testimonial-controls {
+            position: absolute;
+            bottom: 30px; /* Moved even lower */
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-dot.active {
+            background-color: var(--accent-color);
+            transform: scale(1.2);
+        }
+        
+        .testimonial-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: var(--white);
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            color: var(--primary-color);
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0.5;
+            border: none;
+        }
+        
+        .carousel-nav:hover {
+            opacity: 1;
+            background-color: var(--white);
+        }
+        
+        .testimonial-prev {
+            left: -80px;
+        }
+        
+        .testimonial-next {
+            right: -80px;
+        }
+        
+        @media (max-width: 900px) {
+            .hero {
+                padding: 100px 0 70px; /* Reduced from 120px to 100px */
+                background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.7)), url('https://framerusercontent.com/images/5nj6dksKm16iJmj0f6SsPn5MxU.png');
+                background-size: cover;
+                background-position: left center; /* Focus on left side of image on mobile */
+            }
+            
+            .testimonials {
+                height: 520px; /* Further increased mobile height */
+            }
+            
+            .testimonial-slider {
+                width: 90%;
+                height: 400px; /* Further increased mobile slider height */
+            }
+            
+            .testimonial-nav {
+                display: none;
+            }
+            
+            /* Smaller font sizes for mobile */
+            .testimonial-name {
+                font-size: 16px;
+            }
+            
+            .testimonial-title {
+                font-size: 12px;
+            }
+            
+            .testimonial-text {
+                font-size: 14px;
+                line-height: 1.4;
+            }
+            
+            .testimonial-slide {
+                padding: 20px;
+            }
+            
+            .testimonial-avatar {
+                width: 60px;
+                height: 60px;
+            }
+            
+            /* Add hero testimonial mobile styles */
+            .testimonial-banner-text {
+                font-size: 14px;
+                line-height: 1.4;
+            }
+            
+            .testimonial-banner-name {
+                font-size: 16px;
+            }
+            
+            .testimonial-banner-title {
+                font-size: 12px;
+            }
+            
+            .hero-cta {
+                margin-bottom: 40px; /* Add bottom margin in mobile */
+            }
+            
+            .hero-headline {
+                font-size: 32px;
+            }
+            
+            .hero-subheadline {
+                font-size: 16px;
+            }
+            
+            .hero-description {
+                font-size: 16px;
+            }
+        }
+        
+        /* Features */
+        .features {
+            padding: 90px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .features h2 {
+            margin-bottom: 60px;
+            text-align: center;
+            font-size: 36px;
+            color: var(--primary-color);
+        }
+        
+        .features-grid, .service-components {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .features-grid {
+            margin-bottom: 50px;
+        }
+        
+        .feature {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 50px 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--accent-color);
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 36px;
+            width: auto;
+            height: auto;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            display: block;
+        }
+        
+        .feature h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .feature p {
+            font-size: 0.95rem;
+            color: var(--text-color-dark);
+            line-height: 1.5;
+            text-align: center;
+        }
+        
+        /* Intro Section */
+        .intro {
+            padding: 100px 0; /* Slightly more vertical padding */
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(0, 51, 102, 0.03);
+        }
+
+        .intro:before {
+            display: none;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 55% 45%; /* Adjusted from 1fr 1fr to make left column larger */
+            gap: 60px;
+            align-items: start;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro-content {
+            padding-right: 40px; /* More padding */
+            padding-top: 30px; /* Start text higher */
+        }
+
+        .intro-content h2 {
+            font-size: 3rem; /* Larger headline */
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            line-height: 1.1;
+            text-align: left;
+        }
+
+        .intro-content p {
+            font-size: 1rem; /* Slightly larger text */
+            margin-bottom: 22px;
+            color: var(--text-color-dark);
+            line-height: 1.6;
+        }
+
+        .intro-content strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .founder-signature {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin: 30px 0 0;
+            text-align: center;
+        }
+
+        .founder-signature:before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .intro-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .intro-image img {
+            width: 120%; /* Make image larger */
+            max-width: 600px; /* Increase max width */
+            border-radius: 0;
+            position: relative;
+            z-index: 1;
+            margin-left: -10%; /* Shift slightly to overlap the container edge */
+        }
+
+        .intro-image:after {
+            display: none;
+        }
+
+        @media (max-width: 900px) {
+            .intro-image img {
+                width: 100%;
+                margin-left: 0;
+                max-width: 450px;
+            }
+            
+            .intro {
+                padding: 70px 0; /* Less padding on mobile */
+            }
+            
+            .intro-grid {
+                grid-template-columns: 1fr;
+                align-items: center;
+                gap: 30px; /* Less gap on mobile */
+            }
+            
+            .intro-content {
+                order: 1; /* Change to display first */
+                padding-right: 0;
+                padding-top: 0;
+            }
+            
+            .intro-content h2 {
+                font-size: 2.2rem; /* Smaller on mobile */
+                text-align: center;
+            }
+            
+            .intro-image-wrapper {
+                padding-top: 0 !important;
+                order: 2; /* Display after intro content */
+                margin: 0 auto;
+                max-width: 450px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .intro-image {
+                order: 2; /* Change to display after text */
+                margin: 0 auto;
+                max-width: 450px; /* Larger on mobile too */
+                padding-top: 0;
+            }
+            
+            .intro-image img {
+                width: 100%; /* Reset width on mobile */
+                margin-left: 0; /* Reset positioning on mobile */
+            }
+            
+            .founder-signature {
+                text-align: center;
+            }
+            
+            .founder-signature:before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        
+        /* FAQ */
+        .faq {
+            padding: 90px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .faq h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 36px;
+            color: var(--primary-color);
+        }
+        
+        .faq-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--medium-gray);
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: var(--white);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-question {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        
+        .faq-question .arrow {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question .arrow {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px; /* Large enough to fit content */
+            padding-bottom: 25px;
+        }
+        
+        .faq-answer p {
+            font-size: 0.95rem;
+            color: var(--text-color-dark);
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        @media (max-width: 900px) {
+            .faq-question {
+                font-size: 1rem;
+                padding: 15px 20px;
+            }
+            
+            .faq-answer {
+                padding: 0 20px;
+            }
+            
+            .faq-item.active .faq-answer {
+                padding-bottom: 20px;
+            }
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 90px 0;
+            text-align: center;
+            background: linear-gradient(140deg, var(--primary-light) 0%, var(--primary-color) 100%);
+            color: var(--white);
+        }
+        
+        .cta-section h2 {
+            margin-bottom: 30px;
+            color: var(--white);
+            font-size: 36px;
+        }
+        
+        .cta-section .hero-cta {
+            margin-bottom: 0;
+            background-color: var(--white);
+            color: var(--primary-color);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-section .hero-cta:hover {
+            background-color: var(--light-gray);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            max-width: 120px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--white);
+        }
+        
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+            margin-top: 20px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .container {
+                width: 95%;
+                padding: 0 16px;
+            }
+            
+            .site-header {
+                padding: 20px 0;
+            }
+            
+            .logo {
+                max-width: 80px; /* Smaller logo on mobile */
+            }
+            
+            .hero {
+                padding-top: 120px; /* Adjusted top padding for mobile */
+            }
+            
+            .hero-content {
+                align-items: center;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .hero-text {
+                align-items: center;
+            }
+            
+            .hero-headline {
+                font-size: 50px; /* Increased from 32px to 40px */
+            }
+            
+            .hero-subheadline {
+                font-size: 18px; /* Increased from 18px to 22px */
+            }
+            
+            .hero-description {
+                font-size: 18px; /* Increased from 16px to 18px */
+            }
+            
+            .hero-cta {
+                padding: 14px 28px;
+                font-size: 16px;
+            }
+            
+            .testimonial-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+                justify-content: center;
+                margin: 0 auto 60px;
+            }
+            
+            .testimonial-banner-avatar {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .logos-container {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 30px 0;
+                padding: 0 10px;
+            }
+            
+            .logo-item {
+                height: 90px;
+                padding: 10px;
+            }
+            
+            /* Reset special positioning for mobile */
+            .logos-container img:nth-child(-n+4),
+            .logos-container img:nth-child(5),
+            .logos-container img:nth-child(6),
+            .logos-container img:nth-child(7) {
+                grid-column: span 2;
+            }
+            
+            .logos-container img:nth-last-child(-n+3) {
+                margin-top: 0;
+            }
+            
+            /* Center the last logo if there's an odd number */
+            .logos-container img:last-child:nth-child(odd) {
+                grid-column: 2 / span 2;
+            }
+            
+            .testimonial-slider {
+                width: 90%;
+            }
+            
+            .testimonial-nav {
+                display: none;
+            }
+            
+            .testimonials-grid,
+            .features-grid,
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .intro-content {
+                order: 2;
+            }
+            
+            .intro-image {
+                order: 1;
+                margin: 0 auto;
+                max-width: 400px;
+            }
+            
+            .intro-content h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 28px;
+            }
+            
+            .features-grid, .service-components {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero {
+                background-position: 80% top;
+            }
+        }
+        
+        /* Comparison Section */
+        .comparison {
+            padding: 90px 0;
+            background-color: var(--white);
+        }
+        
+        .comparison h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 36px;
+            color: var(--primary-color);
+        }
+        
+        .comparison-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--medium-gray);
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .comparison-container {
+            display: flex;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .comparison-column {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .comparison-column:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .comparison-column.nutrion {
+            border: 2px solid var(--accent-color);
+        }
+        
+        .comparison-header {
+            color: var(--white);
+            padding: 25px 20px;
+            text-align: center;
+        }
+        
+        .comparison-header.standard {
+            background-color: var(--medium-gray);
+        }
+        
+        .comparison-header.nutrion {
+            background-color: var(--primary-color);
+            position: relative;
+        }
+        
+        .comparison-header.nutrion:after {
+            content: "Recommended";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--accent-color);
+            color: var(--primary-dark);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 5px 15px;
+            border-bottom-left-radius: 8px;
+        }
+        
+        .comparison-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .comparison-subtitle-column {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .comparison-items {
+            padding: 0;
+            background-color: var(--white);
+        }
+        
+        .comparison-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .comparison-item:last-child {
+            border-bottom: none;
+        }
+        
+        .comparison-icon {
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--white);
+        }
+        
+        .comparison-item.nutrion .comparison-icon {
+            background-color: var(--accent-color);
+        }
+        
+        .comparison-item.standard .comparison-icon {
+            background-color: var(--medium-gray);
+        }
+        
+        .comparison-content {
+            flex-grow: 1;
+        }
+        
+        .comparison-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .comparison-description {
+            font-size: 0.9rem;
+            color: var(--text-color-dark);
+            line-height: 1.4;
+        }
+        
+        .comparison-note {
+            background-color: rgba(255, 153, 0, 0.1);
+            border-left: 3px solid var(--accent-color);
+            padding: 15px 20px;
+            margin: 30px auto 0;
+            max-width: 800px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .comparison-note-content {
+            font-size: 0.95rem;
+            color: var(--text-color-dark);
+            line-height: 1.5;
+        }
+        
+        .comparison-cta {
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        @media (max-width: 900px) {
+            .comparison-container {
+                flex-direction: column;
+            }
+            
+            .comparison-column.nutrion {
+                order: -1; /* Show Nutrion column first on mobile */
+            }
+            
+            .comparison-item {
+                padding: 15px;
+            }
+            
+            .comparison-title {
+                font-size: 1.3rem;
+            }
+        }
+        
+        .support-process {
+            padding: 90px 0;
+            background-color: var(--white);
+        }
+        
+        .support-process h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 36px;
+            color: var(--primary-color);
+        }
+        
+        .support-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--medium-gray);
+            margin-bottom: 60px;
+        }
+        
+        .process-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .process-timeline:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 24px;
+            width: 3px;
+            background-color: var(--accent-color);
+            z-index: 0;
+        }
+        
+        .process-step {
+            position: relative;
+            margin-bottom: 50px;
+            display: flex;
+            z-index: 1;
+        }
+        
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-right: 25px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 0 5px rgba(255, 153, 0, 0.2);
+        }
+        
+        .step-content {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            padding: 25px;
+            flex-grow: 1;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .step-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0;
+        }
+        
+        .step-toggle {
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .step-content.active .step-toggle {
+            transform: rotate(180deg);
+        }
+        
+        .step-details {
+            overflow: hidden;
+        }
+        
+        .step-content.active .step-title {
+            margin-bottom: 10px;
+        }
+        
+        .step-details p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            color: var(--text-color-dark);
+            line-height: 1.5;
+        }
+        
+        .step-expanded {
+            display: none;
+            padding-top: 15px;
+        }
+        
+        .step-content.active .step-expanded {
+            display: block;
+        }
+        
+        .step-expanded ul {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .step-expanded li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: var(--text-color-dark);
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .process-timeline:before {
+                left: 20px;
+            }
+            
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 50px;
+            z-index: 5;
+        }
+        
+        .scroll-indicator:after {
+            content: "";
+            width: 12px;
+            height: 12px;
+            position: absolute;
+            left: 50%;
+            top: 10px;
+            transform: translateX(-50%) rotate(45deg);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+            border-right: 2px solid rgba(255, 255, 255, 0.8);
+            animation: scrollDown 2s infinite;
+        }
+        
+        @keyframes scrollDown {
+            0% {
+                transform: translateX(-50%) rotate(45deg) translate(0, 0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-50%) rotate(45deg) translate(10px, 10px);
+                opacity: 0;
+            }
+        }
+
+        .service-package {
+            background-color: var(--light-gray);
+            border-radius: 12px;
+            padding: 40px 20px;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .service-package h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .service-components {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .service-component {
+            background-color: var(--white);
+            padding: 50px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--accent-color);
+            text-align: center;
+        }
+
+        .service-component:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            color: var(--accent-color);
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .service-component h4 {
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .service-component p {
+            font-size: 0.95rem;
+            color: var(--text-color-dark);
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .service-components {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pre-animation {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-heading {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            margin-top: 30px;
+        }
+
+        .delivery-section {
+            padding: 90px 0;
+            background-color: var(--light-gray);
+        }
+
+        .delivery-section h2 {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 36px;
+            color: var(--primary-color);
+        }
+
+        .intro .hero-cta {
+            font-size: 1.1rem; /* Slightly larger button text */
+            padding: 16px 32px; /* Larger button */
+            margin-top: 10px; /* Add some spacing */
+        }
+
+        @media (max-width: 900px) {
+            /* Other mobile styling remains the same */
+            
+            .intro .hero-cta {
+                margin: 0 auto;
+                display: block;
+                max-width: 280px;
+            }
+        }
+
+        .intro-image-wrapper {
+            padding-top: 90px;
+        }
+
+        @media (max-width: 900px) {
+            .intro-image-wrapper {
+                padding-top: 0 !important;
+                order: 1;
+                margin: 0 auto;
+                max-width: 450px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .credentials-wrapper {
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .founder-signature {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin: 30px 0 0;
+            text-align: center;
+        }
+
+        .founder-signature:before {
+            content: none;
+        }
+
+        .experience-note {
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            font-style: italic;
+            margin: 5px 0 0;
+            text-align: center;
+        }
+
+        .intro-content .hero-cta {
+            margin-top: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .intro-image-wrapper {
+                padding-top: 0 !important;
+                order: 1;
+                margin: 0 auto;
+                max-width: 450px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .intro-content {
+                order: 2;
+                padding-right: 0;
+                padding-top: 0;
+            }
+            
+            .intro-content h2 {
+                font-size: 2.2rem;
+                text-align: center;
+            }
+            
+            .intro-content .hero-cta {
+                margin: 30px auto 0;
+                display: block;
+                max-width: 280px;
+            }
+        }
+
+        .credentials-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0 30px;
+        }
+
+        .credential {
+            background-color: rgba(0, 51, 102, 0.05);
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .credential i {
+            color: var(--accent-color);
+        }
+
+        .experience-note {
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            font-style: italic;
+            margin: 5px 0 0;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .credentials-bar {
+                justify-content: center;
+            }
+            
+            .experience-note {
+                text-align: center;
+            }
+        }
+
+        /* Add after the existing CSS, before the media queries */
+        .intro-grid-mobile-wrapper {
+            display: none;
+        }
+        
+        /* Add in the mobile media query section */
+        @media (max-width: 900px) {
+            /* Hide desktop layout and show mobile layout */
+            .intro-grid {
+                display: none;
+            }
+            
+            .intro-grid-mobile-wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 20px; /* Reduced from 30px */
+            }
+            
+            .intro-content-mobile {
+                text-align: left; /* Changed from center to left */
+            }
+            
+            .intro-content-mobile h2 {
+                font-size: 2.2rem;
+                text-align: left; /* Changed from center to left */
+                margin-bottom: 25px; /* Reduced from 30px */
+                color: var(--primary-color);
+            }
+            
+            .intro-content-mobile p {
+                font-size: 1rem;
+                margin-bottom: 20px; /* Reduced from 22px */
+                color: var(--text-color-dark);
+                line-height: 1.6;
+                text-align: left; /* Explicitly set to left */
+            }
+            
+            .intro-image-mobile {
+                margin: 10px auto; /* Reduced from 20px */
+                max-width: 450px;
+            }
+            
+            .intro-image-mobile img {
+                width: 100%;
+                max-width: 450px;
+                margin: 0 auto;
+            }
+            
+            .credentials-text-mobile {
+                text-align: center;
+                margin-top: 0; /* Reduced from 5px to 0 */
+            }
+            
+            .credentials-text-mobile p {
+                margin-bottom: 5px; /* Added small margin between paragraphs */
+            }
+            
+            .credentials-text-mobile .founder-signature {
+                margin-top: 5px; /* Very small top margin */
+            }
+            
+            .credentials-and-cta-mobile {
+                padding-top: 15px; /* Slightly increased from 10px */
+                text-align: center;
+            }
+            
+            .credentials-and-cta-mobile .hero-cta {
+                margin-top: 25px;
+                display: inline-block;
+            }
+        }
+
+        .app-showcase {
+            padding: 90px 0;
+            background-color: var(--light-gray);
+        }
+
+        .app-showcase h2 {
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 36px;
+            color: var(--primary-color);
+        }
+
+        .app-showcase .support-subtitle {
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-color-dark);
+        }
+
+        /* Device frame styles */
+        .device-frame {
+            position: relative;
+            width: 400px;
+            height: 830px;
+            background-color: #0f0f0f; /* Darker black for iPhone 16 Pro Max */
+            border-radius: 50px; /* Rounder corners for iPhone 16 Pro Max */
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12), 0 10px 20px rgba(0, 0, 0, 0.08);
+            padding: 4px; /* Reduced even further to create an ultra-thin frame */
+            margin-bottom: 20px;
+            border: none; /* Removed border completely */
+        }
+
+        .device-screen {
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            border-radius: 47px; /* Further adjusted to account for thinner frame */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .device-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30%; /* Narrower Dynamic Island */
+            height: 20px; /* Reduced height */
+            background-color: #0f0f0f;
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+            z-index: 2;
+        }
+
+        .app-screenshot {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .app-screenshot.active {
+            opacity: 1;
+        }
+
+        /* App Feature Carousel */
+        .app-feature-carousel {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Feature Content Container */
+        .feature-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 860px;
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Device Frame Container */
+        .device-frame-container {
+            flex: 0 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 420px;
+            margin: 0;
+        }
+
+        /* Feature Text Container */
+        .feature-text-container {
+            flex: 0 0 auto;
+            padding: 50px 30px;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 380px;
+            visibility: hidden;
+            right: 90px; /* Increased from 70px to 90px to move text box further left */
+            text-align: center;
+        }
+
+        .feature-text-container.active {
+            opacity: 1;
+            transform: translateY(-50%);
+            visibility: visible;
+        }
+
+        /* Position device on right for even features */
+        .feature-container:nth-child(even) .feature-text-container {
+            right: auto;
+            left: 70px;
+        }
+        
+        .feature-container:nth-child(even) .device-frame-container {
+            left: auto;
+            right: 70px;
+        }
+
+        /* Carousel Navigation */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            color: var(--primary-color);
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0.5;
+            border: none;
+        }
+        
+        .carousel-nav:hover {
+            opacity: 1;
+            background-color: var(--white);
+        }
+
+        .carousel-prev {
+            left: 20px;
+        }
+
+        .carousel-next {
+            right: 30px; /* Increased from 20px to 30px to add more space */
+        }
+
+        /* Mobile Responsiveness for Carousel */
+        @media (max-width: 900px) {
+            .feature-container {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .device-frame-container, 
+            .feature-text-container {
+                flex: 0 0 100%;
+                width: 100%;
+                position: relative;
+                transform: none;
+                top: auto;
+                left: auto;
+                right: auto;
+            }
+
+            .device-frame-container {
+                margin-bottom: 30px;
+            }
+
+            .feature-text-container {
+                margin-top: 30px;
+                margin-bottom: 30px;
+                padding: 30px;
+                visibility: visible;
+                /* opacity: 1;
+                border-top: 4px solid var(--accent-color); */
+            }
+
+            .feature-text-container.active {
+                transform: none;
+            }
+
+            .carousel-nav {
+                top: auto;
+                bottom: 20px;
+                transform: none;
+            }
+
+            .carousel-prev {
+                left: calc(50% - 50px);
+            }
+
+            .carousel-next {
+                right: calc(50% - 50px);
+            }
+        }
+
+        /* App feature elements styling to match service-component */
+        .app-feature-icon {
+            font-size: 36px;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .app-feature-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .app-feature-text {
+            font-size: 0.95rem;
+            color: var(--text-color-dark);
+            line-height: 1.5;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <img src="https://framerusercontent.com/images/BWEaipn67Qc3Jg3inQssO6rrJ4.png" alt="Nutrion Health" class="logo">
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-headline">Performance Nutrition for BJJ Athletes</h1>
+                    <h2 class="hero-subheadline">Custom plans and expert guidance from a certified nutritionist and BJJ black belt</h2>
+                </div>
+                
+                <!-- Featured Testimonial -->
+                <div class="testimonial-banner">
+                    <img src="https://framerusercontent.com/images/oyeOmZZt62caqVWpCwYinajVQ.png" alt="Nia Blackman" class="testimonial-banner-avatar">
+                    <div class="testimonial-banner-content">
+                        <p class="testimonial-banner-text">"This is the best I've felt physically! I'm super grateful for the support and guidance on my nutrition and weight management from Daniel."</p>
+                        <div class="testimonial-banner-name">Nia Blackman</div>
+                        <div class="testimonial-banner-title">BJJ Black Belt, Euro Champion, ADCC Trials Winner</div>
+                    </div>
+                </div>
+                
+                <a href="https://f19cdvsmvlk.typeform.com/to/O8K7o2hl?utm_source=homepage" class="hero-cta" target="_blank">Get Your Free BJJ Nutrition Assessment</a>
+            </div>
+        </div>
+        <div class="scroll-indicator" aria-hidden="true"></div>
+    </section>
+    
+    <!-- Social Proof Bar -->
+    <div class="social-proof-bar">
+        <div class="container">
+            <h3 class="social-proof-title">Supporting athletes at world-class competitions</h3>
+            <div class="logos-container">
+                <img src="https://framerusercontent.com/images/D9wWBDyeBNdohHqjn8LWSttrs.png" alt="IBJJF World Championship" class="logo-item" title="IBJJF World Championship">
+                <img src="https://framerusercontent.com/images/pBw1iKmBeNNwc1HEfIXhCSPJyBo.png" alt="ADCC World Championships" class="logo-item" title="ADCC World Championships">
+                <img src="https://framerusercontent.com/images/XboUiWrKfpENiKT97tDeZGD2rJw.png" alt="AJP Tour" class="logo-item" title="AJP Tour">
+                <img src="https://framerusercontent.com/images/rJ1Aq0dZtPYBCbGr1t0LKmAUknk.png" alt="IBJJF European Championship" class="logo-item" title="IBJJF European Championship">
+                <img src="https://framerusercontent.com/images/rXChhBhVysN2wv8ASl0q8X6q9qs.png" alt="EBI" class="logo-item" title="Eddie Bravo Invitational">
+                <img src="https://framerusercontent.com/images/AVpaR3AiCuAHnMTmE2eboxsRW98.png" alt="ADCC European Trials" class="logo-item" title="ADCC European Trials">
+                <img src="https://framerusercontent.com/images/7J0Iwqk9dXx1O2A12yl4AHvO8.png" alt="IBJJF Grand Slam" class="logo-item" title="IBJJF Grand Slam">
+            </div>
+        </div>
+    </div>
+
+    <!-- BJJ Nutrition Solutions -->
+    <section class="features">
+        <div class="container">
+            <h2>Strategic Nutrition for BJJ Excellence</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fa-solid fa-weight-scale feature-icon"></i>
+                    <h3>Make Weight Without the Struggle</h3>
+                    <p>Say goodbye to extreme dieting, dehydration, and last-minute panic before weigh-ins.</p>
+                </div>
+                <div class="feature">
+                    <i class="fa-solid fa-bolt feature-icon"></i>
+                    <h3>Train Longer, Recover Faster</h3>
+                    <p>No more mid-roll fatigue or missing evening classes due to exhaustion.</p>
+                </div>
+                <div class="feature">
+                    <i class="fa-solid fa-medal feature-icon"></i>
+                    <h3>Perform at Your Best</h3>
+                    <p>Maintain focus, strength, and stamina from your first match to your last, even in day-long tournaments.</p>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 40px;">
+                <a href="https://f19cdvsmvlk.typeform.com/to/O8K7o2hl?utm_source=homepage" class="hero-cta" target="_blank">Get Your Free BJJ Nutrition Assessment</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="testimonial-slider">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-header">
+                        <img src="https://framerusercontent.com/images/SD4WtR2dgTTIwe9gGQzz2TXnobs.png" alt="Rosa Walsh" class="testimonial-avatar">
+                        <div>
+                            <div class="testimonial-name">Rosa Walsh</div>
+                            <div class="testimonial-title">BJJ Black Belt, Euro Black Belt Nogi Champion, Team Ireland Grappling</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "I have worked with Daniel and Vanessa the past month and have never experienced a service so user friendly and effective. The food is simple and delicious. The app is incredibly user-friendly and they are always on hand to help! Couldn't recommend them enough!"
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-header">
+                        <img src="https://framerusercontent.com/images/8BtfKn9BorteAnzHxNP8S7m7keM.png" alt="Cheri McMahon" class="testimonial-avatar">
+                        <div>
+                            <div class="testimonial-name">Cheri McMahon</div>
+                            <div class="testimonial-title">BJJ Blue Belt</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "Danny has been great in helping me achieve my nutrition goals. This has resulted in more consistency and ability to maintain healthy food choices and finally see the results I wanted, despite having a very busy and hectic work schedule. The weekly deep dive check-ins help identify trends and patterns in behaviour and habits which has meant I can look out for these tripwires to prevent future problems occurring. Thanks Danny & Vanessa for providing great support."
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-header">
+                        <img src="https://framerusercontent.com/images/LP8fsF7QDXp4uA8FnpOy1Qo5URI.png" alt="Paloma Dias" class="testimonial-avatar">
+                        <div>
+                            <div class="testimonial-name">Paloma Dias</div>
+                            <div class="testimonial-title">BJJ Black Belt, BJJ Master</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "Makes your goals more practical and efficient! It's complete, I can maintain my routine without worrying about making mistakes!"
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-header">
+                        <img src="https://framerusercontent.com/images/aGABfp9HGU26mw86FYKWs9S3g.png" alt="Sula-Mae Loewenthal" class="testimonial-avatar">
+                        <div>
+                            <div class="testimonial-name">Sula-Mae Loewenthal</div>
+                            <div class="testimonial-title">BJJ Black Belt, ADCC Trials Winner</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "I've been working with Nutrion for over two years now and I don't have a single bad word to say! They have always been super kind and responsive and have most importantly helped me with both weight loss and weight gain over the last two years depending on my goals. I've noticed way less stress and anxiety when it comes to my nutrition, I can just trust that they've got it handled."
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-header">
+                        <img src="https://framerusercontent.com/images/Pj0ESCWuO20rFxsl0JSmd7g0CXI.png" alt="Carlotta Vollmar" class="testimonial-avatar">
+                        <div>
+                            <div class="testimonial-name">Carlotta Vollmar</div>
+                            <div class="testimonial-title">European Purple Belt Nogi Champion</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "I can't thank Daniel and Vanessa enough. I used their expertise to prepare myself for a pretty big competition and it couldn't have gone any better! Their knowledge and support is unmatched, because of them I didn't need to worry about "my weight" but could focus on getting better and stronger. I can't recommend to work with them enough! 💞"
+                    </div>
+                </div>
+                
+                <div class="testimonial-nav testimonial-prev">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div class="testimonial-nav testimonial-next">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="testimonial-controls"></div>
+        </div>
+    </section>
+
+    <!-- Daniel Intro -->
+    <section class="intro">
+        <div class="container">
+            <!-- Desktop layout -->
+            <div class="intro-grid">
+                <div class="intro-content">
+                    <h2>Performance Fuel: Black Belt Approved</h2>
+                    <p>Skipping training sessions because your energy is depleted? Struggling to make weight without sacrificing your strength? Competing at 70% of your potential because of preparation mistakes?</p>
+                    <p>I know these challenges firsthand. As a professional BJJ athlete, I struggled with my own nutrition until generic advice from non-specialized nutritionists led me to pursue a Nutrition Science degree while still competing.</p>
+                    <p>Now, I combine nutrition science with 12+ years of BJJ experience to create strategies that actually work for the unique demands of our sport.</p>
+                    
+                    <div class="credentials-bar">
+                        <div class="credential"><i class="fa-solid fa-graduation-cap"></i> B.Sc. Nutrition Science</div>
+                        <div class="credential"><i class="fa-solid fa-medal"></i> Professional BJJ Athlete</div>
+                        <div class="credential"><i class="fa-solid fa-globe"></i> Clients in 10+ Countries</div>
+                    </div>
+                    
+                    <a href="https://f19cdvsmvlk.typeform.com/to/O8K7o2hl?utm_source=homepage" class="hero-cta" target="_blank">Get Your Free BJJ Nutrition Assessment</a>
+                </div>
+                <div class="intro-image-wrapper" style="padding-top: 90px;">
+                    <div class="intro-image">
+                        <img src="https://framerusercontent.com/images/1U92DZCBjEuTF9ZcLUywcJ2MPg.png" alt="Daniel Caetano">
+                    </div>
+                    <div class="credentials-text">
+                        <p class="founder-signature">Daniel Caetano, <br>Nutritionist and BJJ Black Belt</p>
+                        <p class="experience-note">Helping BJJ athletes from amateur to global elite for over 4 years</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile-specific layout -->
+            <div class="intro-grid-mobile-wrapper">
+                <!-- 1. Content first (without credentials and button) -->
+                <div class="intro-content-mobile">
+                    <h2>Performance Fuel: Black Belt Approved</h2>
+                    <p>Skipping training sessions because your energy is depleted? Struggling to make weight without sacrificing your strength? Competing at 70% of your potential because of preparation mistakes?</p>
+                    <p>I know these challenges firsthand. As a professional BJJ athlete, I struggled with my own nutrition until generic advice from non-specialized nutritionists led me to pursue a Nutrition Science degree while still competing.</p>
+                    <p>Now, I combine nutrition science with 12+ years of BJJ experience to create strategies that actually work for the unique demands of our sport.</p>
+                </div>
+                
+                <!-- 2. Image second -->
+                <div class="intro-image-mobile">
+                    <img src="https://framerusercontent.com/images/1U92DZCBjEuTF9ZcLUywcJ2MPg.png" alt="Daniel Caetano">
+                </div>
+                
+                <!-- 3. Credentials text third -->
+                <div class="credentials-text-mobile">
+                    <p class="founder-signature">Daniel Caetano, <br>Nutritionist and BJJ Black Belt</p>
+                    <p class="experience-note">Helping BJJ athletes from amateur to global elite for over 4 years</p>
+                </div>
+                
+                <!-- 4. Credentials badges and button last -->
+                <div class="credentials-and-cta-mobile">
+                    <div class="credentials-bar">
+                        <div class="credential"><i class="fa-solid fa-graduation-cap"></i> B.Sc. Nutrition Science</div>
+                        <div class="credential"><i class="fa-solid fa-medal"></i> Professional BJJ Athlete</div>
+                        <div class="credential"><i class="fa-solid fa-globe"></i> Clients in 10+ Countries</div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 25px;">
+                        <a href="https://f19cdvsmvlk.typeform.com/to/O8K7o2hl?utm_source=homepage" class="hero-cta" target="_blank">Get Your Free BJJ Nutrition Assessment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Deliver Results -->
+    <section class="delivery-section">
+        <div class="container">
+            <h2>How We Deliver These Results</h2>
+            <div class="features-grid">
+                <div class="feature service-component">
+                    <i class="fa-solid fa-utensils feature-icon"></i>
+                    <h3>Custom Nutrition Plans</h3>
+                    <p>Fully custom meal plans built for you — not generic diet advice.</p>
+                </div>
+                <div class="feature service-component">
+                    <i class="fa-solid fa-comments feature-icon"></i>
+                    <h3>Continuous Support</h3>
+                    <p>Daily WhatsApp access, weekly check-ins, and monthly video consultations to keep you on track.</p>
+                </div>
+                <div class="feature service-component">
+                    <i class="fa-solid fa-dumbbell feature-icon"></i>
+                    <h3>BJJ-Specific Expertise</h3>
+                    <p>Guidance from a nutritionist who is also a BJJ black belt.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Visualization -->
+    <section class="support-process">
+        <div class="container">
+            <h2>How It Works</h2>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Initial Assessment <i class="fa-solid fa-chevron-down step-toggle"></i></h3>
+                        <div class="step-details">
+                            <div class="step-expanded">
+                                <p>We analyze your goals, training schedule, diet history, and competition plans to create your personalized nutrition strategy.</p>
+                                <p><strong>This includes:</strong></p>
+                                <ul>
+                                    <li>Comprehensive questionnaire about your health history and goals</li>
+                                    <li>Body composition analysis using submitted photos</li>
+                                    <li>Detailed review of your current diet approach</li>
+                                    <li>Analysis of your training schedule and intensity</li>
+                                    <li>Assessment of your competition calendar and weight management needs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Custom Meal Plan <i class="fa-solid fa-chevron-down step-toggle"></i></h3>
+                        <div class="step-details">
+                            <div class="step-expanded">
+                                <p>Within 5 business days, you'll receive your initial nutrition plan designed specifically for your body, training style, and lifestyle needs.</p>
+                                <p><strong>Your plan includes:</strong></p>
+                                <ul>
+                                    <li>Daily meal structure tailored to your training schedule</li>
+                                    <li>Customized meal options based on your food preferences</li>
+                                    <li>Simple, easy-to-follow recipes and meal ideas</li>
+                                    <li>Timing recommendations for optimal performance and recovery</li>
+                                    <li>Personalized supplement recommendations to support your goals</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Ongoing Support <i class="fa-solid fa-chevron-down step-toggle"></i></h3>
+                        <div class="step-details">
+                            <div class="step-expanded">
+                                <p>Direct WhatsApp access to your nutritionist for questions, challenges, and adjustments as your training evolves. We're here to support you every step of the way.</p>
+                                <p><strong>Our support includes:</strong></p>
+                                <ul>
+                                    <li>Unlimited WhatsApp messaging with quick response times</li>
+                                    <li>Advice for navigating special occasions and travel</li>
+                                    <li>Real-time troubleshooting for challenges you encounter</li>
+                                    <li>Adjustments to your plan as your training schedule changes</li>
+                                    <li>Guidance for implementing your nutrition plan in real-world situations</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Regular Check-ins <i class="fa-solid fa-chevron-down step-toggle"></i></h3>
+                        <div class="step-details">
+                            <div class="step-expanded">
+                                <p>Weekly progress tracking ensures your nutrition plan evolves with your body and goals. Based on your feedback and results, we'll make personalized adjustments to optimize your plan.</p>
+                                <p><strong>Check-ins cover:</strong></p>
+                                <ul>
+                                    <li>Weekly progress reports submitted through a simple check-in form</li>
+                                    <li>Weight and body composition monitoring</li>
+                                    <li>Energy levels and performance assessments</li>
+                                    <li>Feedback on meal adherence and satisfaction</li>
+                                    <li>Personalized tips and recommendations based on your reported experiences</li>
+                                    <li>Precise plan adjustments based on your results and feedback</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Video Consultations <i class="fa-solid fa-chevron-down step-toggle"></i></h3>
+                        <div class="step-details">
+                            <div class="step-expanded">
+                                <p>In-depth video calls to discuss progress, make major adjustments, and plan for upcoming competitions. Depending on your selected plan, these can be weekly or monthly. We'll continuously refine your plan based on your changing needs.</p>
+                                <p><strong>Consultations include:</strong></p>
+                                <ul>
+                                    <li>Convenient scheduling through our easy-to-use booking calendar</li>
+                                    <li>Comprehensive review of your progress since the last call</li>
+                                    <li>Detailed discussion of what's working and what's not</li>
+                                    <li>Strategic planning for upcoming training blocks</li>
+                                    <li>Education on nutrition principles relevant to your goals</li>
+                                    <li>Setting new targets and adjusting your plan accordingly</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Competition Preparation <i class="fa-solid fa-chevron-down step-toggle"></i></h3>
+                        <div class="step-details">
+                            <div class="step-expanded">
+                                <p>Specialized nutrition timing and strategies for reaching your ideal weight while optimizing performance. We'll help you peak at exactly the right time for competition day.</p>
+                                <p><strong>Preparation includes:</strong></p>
+                                <ul>
+                                    <li>Strategic weight management approaching competition</li>
+                                    <li>Carbohydrate manipulation for optimal energy levels</li>
+                                    <li>Hydration protocols for weigh-ins and competition</li>
+                                    <li>Day-of-competition fueling strategies</li>
+                                    <li>Recovery nutrition for multi-match tournaments</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Showcase -->
+    <section class="features app-showcase">
+        <div class="container">
+            <h2>Your Nutrition Plan in Your Pocket</h2>
+            <p class="support-subtitle">Access your personalized plan anytime, anywhere through our dedicated app</p>
+            
+            <div class="app-feature-carousel">
+                <!-- Feature Container - Holds all features -->
+                <div class="feature-container">
+                    <!-- Device Frame (always visible) -->
+                    <div class="device-frame-container">
+                        <div class="device-frame">
+                            <div class="device-notch"></div>
+                            <div class="device-screen">
+                                <!-- All screenshots stacked, only one visible at a time -->
+                                <img src="https://storage.googleapis.com/nutrion-website-images/app-screenshots/MealPlan.png" alt="Nutrion App - Meal Plan" class="app-screenshot" data-index="0">
+                                <img src="https://storage.googleapis.com/nutrion-website-images/app-screenshots/Recipe.png" alt="Nutrion App - Recipe View" class="app-screenshot" data-index="1">
+                                <img src="https://storage.googleapis.com/nutrion-website-images/app-screenshots/GroceryList.png" alt="Nutrion App - Grocery List" class="app-screenshot" data-index="2">
+                                <img src="https://storage.googleapis.com/nutrion-website-images/app-screenshots/Home.png" alt="Nutrion App - Daily Habits" class="app-screenshot" data-index="3">
+                                <img src="https://storage.googleapis.com/nutrion-website-images/app-screenshots/Activity.png" alt="Nutrion App - Activity Tracking" class="app-screenshot" data-index="4">
+                                <img src="https://storage.googleapis.com/nutrion-website-images/app-screenshots/MaterialsLibrary.png" alt="Nutrion App - Materials Library" class="app-screenshot" data-index="5">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Feature Text Content (stacked, only one visible at a time) -->
+                    <div class="feature-text-container" data-index="0">
+                        <i class="fa-solid fa-utensils app-feature-icon"></i>
+                        <h3 class="app-feature-title">Custom Meal Plans</h3>
+                        <p class="app-feature-text">Fully custom meal plans built for you — not generic diet advice.</p>
+                    </div>
+                    
+                    <div class="feature-text-container" data-index="1">
+                        <i class="fa-solid fa-book-open app-feature-icon"></i>
+                        <h3 class="app-feature-title">Easy-to-Follow Recipes</h3>
+                        <p class="app-feature-text">Simple, tasty recipes with step-by-step instructions make meal preparation quick and enjoyable.</p>
+                    </div>
+                    
+                    <div class="feature-text-container" data-index="2">
+                        <i class="fa-solid fa-list-check app-feature-icon"></i>
+                        <h3 class="app-feature-title">Smart Shopping Lists</h3>
+                        <p class="app-feature-text">Automatically generated shopping lists based on your meal plan to make food shopping effortless.</p>
+                    </div>
+                    
+                    <div class="feature-text-container" data-index="3">
+                        <i class="fa-solid fa-stairs app-feature-icon"></i>
+                        <h3 class="app-feature-title">Multi-Level Habit System</h3>
+                        <p class="app-feature-text">Multi-level habit system with streaks tracking to help you develop sustainable nutrition habits.</p>
+                    </div>
+                    
+                    <div class="feature-text-container" data-index="4">
+                        <i class="fa-solid fa-chart-line app-feature-icon"></i>
+                        <h3 class="app-feature-title">Progress Tracking</h3>
+                        <p class="app-feature-text">Monitor your progress with weekly check-ins submitted through our simple digital form.</p>
+                    </div>
+                    
+                    <div class="feature-text-container" data-index="5">
+                        <i class="fa-solid fa-folder-open app-feature-icon"></i>
+                        <h3 class="app-feature-title">Resource Library</h3>
+                        <p class="app-feature-text">Access PDF guides and educational materials to deepen your understanding of nutrition for BJJ.</p>
+                    </div>
+                    
+                    <!-- Subtle Navigation Controls -->
+                    <div class="carousel-nav carousel-prev">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </div>
+                    <div class="carousel-nav carousel-next">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 60px;">
+                <a href="https://f19cdvsmvlk.typeform.com/to/O8K7o2hl?utm_source=homepage" class="hero-cta" target="_blank">Get Your Free BJJ Nutrition Assessment</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add overlay for app features gallery -->
+    <div class="screenshot-overlay" id="appFeaturesOverlay" style="display: none;">
+        <!-- Content has been hidden with display: none since it's no longer needed -->
+    </div>
+
+    <!-- Service Comparison -->
+    <section class="comparison">
+        <div class="container">
+            <h2>Why Choose a BJJ-Specific Nutrition Coach?</h2>
+            <p class="comparison-subtitle">The difference between generic nutrition advice and specialized coaching designed specifically for BJJ athletes can be the edge you need to succeed on the mats.</p>
+            
+            <div class="comparison-container">
+                <!-- Generic Column -->
+                <div class="comparison-column standard">
+                    <div class="comparison-header standard">
+                        <h3 class="comparison-title">Generic Nutrition Programs</h3>
+                        <p class="comparison-subtitle-column">One-size-fits-all approach</p>
+                    </div>
+                    
+                    <div class="comparison-items">
+                        <div class="comparison-item standard">
+                            <div class="comparison-icon">
+                                <i class="fa-solid fa-dumbbell"></i>
+                            </div>
+                            <div class="comparison-content">
+                                <h4 class="comparison-label">Training Knowledge</h4>
+                                <p class="comparison-description">Limited understanding of BJJ's unique physical demands and energy requirements.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-item standard">
+                            <div class="comparison-icon">
+                                <i class="fa-solid fa-scale-balanced"></i>
+                            </div>
+                            <div class="comparison-content">
+                                <h4 class="comparison-label">Weight Management</h4>
+                                <p class="comparison-description">Generic weight cut advice without understanding BJJ competition timing and recovery needs.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-item standard">
+                            <div class="comparison-icon">
+                                <i class="fa-solid fa-comments"></i>
+                            </div>
+                            <div class="comparison-content">
+                                <h4 class="comparison-label">Support System</h4>
+                                <p class="comparison-description">Limited check-ins and generic guidance not specific to your training and competition schedule.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-item standard">
+                            <div class="comparison-icon">
+                                <i class="fa-solid fa-calendar"></i>
+                            </div>
+                            <div class="comparison-content">
+                                <h4 class="comparison-label">Competition Prep</h4>
+                                <p class="comparison-description">Standard meal plans that don't account for competition cycles or specific performance timing.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Nutrion Column -->
+                <div class="comparison-column nutrion">
+                    <div class="comparison-header nutrion">
+                        <h3 class="comparison-title">Nutrion BJJ Coaching</h3>
+                        <p class="comparison-subtitle-column">Tailored for BJJ performance</p>
+                    </div>
+                    
+                    <div class="comparison-items">
+                        <div class="comparison-item nutrion">
+                            <div class="comparison-icon">
+                                <i class="fa-solid fa-dumbbell"></i>
+                            </div>
+                            <div class="comparison-content">
+                                <h4 class="comparison-label">BJJ Specific Knowledge</h4>
+                                <p class="comparison-description">First-hand experience as an active BJJ black belt who understands the energy demands of training and competing.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-item nutrion">
+                            <div class="comparison-icon">
+                                <i class="fa-solid fa-scale-balanced"></i>
+                            </div>
+                            <div class="comparison-content">
+                                <h4 class="comparison-label">Strategic Weight Management</h4>
+                                <p class="comparison-description">Specialized plans for weight management that preserve strength and energy specifically for BJJ competitions.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-item nutrion">
+                            <div class="comparison-icon">
+                                <i class="fa-solid fa-comments"></i>
+                            </div>
+                            <div class="comparison-content">
+                                <h4 class="comparison-label">Continuous Support</h4>
+                                <p class="comparison-description">7-day access with ongoing adjustments based on your specific training feedback and performance goals.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-item nutrion">
+                            <div class="comparison-icon">
+                                <i class="fa-solid fa-calendar"></i>
+                            </div>
+                            <div class="comparison-content">
+                                <h4 class="comparison-label">Competition Precision</h4>
+                                <p class="comparison-description">Detailed nutrition timing and strategy for optimal performance during tournaments and competitions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comparison-note">
+                <p class="comparison-note-content"><strong>"As a BJJ athlete myself, I know that generic nutrition advice rarely works for our sport. That's why I've built a program that addresses the specific challenges we face on and off the mats."</strong> — Daniel Caetano, Nutritionist & BJJ Black Belt</p>
+            </div>
+            
+            <div class="comparison-cta">
+                <a href="https://f19cdvsmvlk.typeform.com/to/O8K7o2hl?utm_source=homepage" class="hero-cta" target="_blank">Get Your Free BJJ Nutrition Assessment</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-subtitle">
+                <p>Here are some common questions about our nutrition coaching services. If you have any other questions, feel free to contact us!</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What makes Nutrion different from other nutrition programs?
+                        <span class="arrow">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nutrion is specifically designed for BJJ athletes, with nutrition plans that work around your training schedule. Your coach is both a nutritionist and an active BJJ black belt who understands the unique demands of the sport from first-hand experience. This dual expertise allows for truly personalized guidance that generic nutrition programs simply can't offer.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        I have a busy life and no established routine. Will this program work for me?
+                        <span class="arrow">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We specifically design our nutrition plans around your existing schedule and preferences. The program adapts to your life, not the other way around, making it ideal for busy athletes. Our approach focuses on practical, sustainable strategies that fit into your lifestyle, rather than rigid meal plans that require complete lifestyle changes.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can your program help me with weight management for competitions?
+                        <span class="arrow">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, weight management for competition is one of our specialties. Whether you're looking to cut weight, maintain, or gain muscle, our personalized approach creates sustainable plans tailored to your specific competition schedule. We provide strategies that help you reach your target weight while maintaining strength and energy for optimal performance on competition day.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if I have dietary restrictions or allergies?
+                        <span class="arrow">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We work with all types of dietary restrictions and preferences, including vegetarian, vegan, gluten-free, dairy-free, and other allergy-specific needs. Your nutrition plan will be fully customized to accommodate your unique requirements while ensuring you get all the nutrients needed for optimal BJJ performance and recovery.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How long does it take to see results?
+                        <span class="arrow">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most clients start seeing noticeable changes in energy levels and recovery within the first 2 weeks. For body composition changes, you can typically expect visible results within 4-6 weeks of consistent implementation. Competition weight management timelines are discussed individually based on your specific goals and starting point.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do I need to track calories or macros every day?
+                        <span class="arrow">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Not necessarily. While we do use calorie and macro tracking as a tool when needed, our focus is on developing sustainable habits rather than creating dependency on tracking apps. Some clients benefit from tracking initially before transitioning to more intuitive approaches, while others may never need to track. We personalize the approach based on your preferences and what works best for your lifestyle.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to perform better on the mats?</h2>
+            <a href="https://f19cdvsmvlk.typeform.com/to/O8K7o2hl?utm_source=homepage" class="hero-cta" target="_blank">Get Your Free BJJ Nutrition Assessment</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <img src="https://framerusercontent.com/images/BWEaipn67Qc3Jg3inQssO6rrJ4.png" alt="Nutrion Health" class="footer-logo">
+            <div class="footer-links">
+                <a href="#" class="footer-link">About Us</a>
+                <a href="pricing.html" class="footer-link">Pricing</a>
+                <a href="#" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+            <p class="copyright">© 2023 Nutrion Health. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.closest('.faq-item');
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Reset all arrow icons
+                document.querySelectorAll('.arrow').forEach(arrow => {
+                    arrow.textContent = '+';
+                });
+                
+                // Toggle current FAQ item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                    question.querySelector('.arrow').textContent = '-';
+                }
+            });
+        });
+    </script>
+    
+    <!-- Animation script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Process steps toggle functionality
+            document.querySelectorAll('.step-title').forEach(title => {
+                title.addEventListener('click', () => {
+                    const stepContent = title.closest('.step-content');
+                    const isActive = stepContent.classList.contains('active');
+                    
+                    // Close all expanded steps
+                    document.querySelectorAll('.step-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Toggle current step
+                    if (!isActive) {
+                        stepContent.classList.add('active');
+                    }
+                });
+            });
+            
+            // Feature cards animation
+            const featureCards = document.querySelectorAll('.feature');
+            
+            const featureObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Add delay based on index
+                        setTimeout(() => {
+                            entry.target.classList.add('animate-in');
+                        }, index * 150); // 150ms delay between each card
+                        featureObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            featureCards.forEach(card => {
+                card.classList.add('pre-animation');
+                featureObserver.observe(card);
+            });
+            
+            // Service component cards animation
+            const serviceCards = document.querySelectorAll('.service-component');
+            
+            const serviceObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Add delay based on index
+                        setTimeout(() => {
+                            entry.target.classList.add('animate-in');
+                        }, index * 150); // 150ms delay between each card
+                        serviceObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            serviceCards.forEach(card => {
+                card.classList.add('pre-animation');
+                serviceObserver.observe(card);
+            });
+        });
+    </script>
+
+    <!-- Add JavaScript for testimonials slider -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const controlsContainer = document.querySelector('.testimonial-controls');
+        const prevButton = document.querySelector('.testimonial-prev');
+        const nextButton = document.querySelector('.testimonial-next');
+        
+        let currentSlide = 0;
+        let slideInterval;
+        
+        // Create dots
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('testimonial-dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+                restartInterval();
+            });
+            controlsContainer.appendChild(dot);
+        });
+        
+        const dots = document.querySelectorAll('.testimonial-dot');
+        
+        // Set up navigation
+        prevButton.addEventListener('click', () => {
+            goToSlide(currentSlide - 1);
+            restartInterval();
+        });
+        
+        nextButton.addEventListener('click', () => {
+            goToSlide(currentSlide + 1);
+            restartInterval();
+        });
+        
+        // Functions
+        function goToSlide(slideIndex) {
+            // Handle wrapping
+            if (slideIndex < 0) {
+                slideIndex = slides.length - 1;
+            } else if (slideIndex >= slides.length) {
+                slideIndex = 0;
+            }
+            
+            // Hide current slide
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            // Show new slide
+            currentSlide = slideIndex;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+        
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+        
+        function startInterval() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+        
+        function restartInterval() {
+            clearInterval(slideInterval);
+            startInterval();
+        }
+        
+        // Start the automatic slideshow
+        startInterval();
+    });
+    </script>
+
+    <!-- Add JavaScript for screenshot viewer at the end of the body tag -->
+    <script>
+        // Initialize screenshot viewer
+        document.addEventListener('DOMContentLoaded', function() {
+            const screenshotCards = document.querySelectorAll('.app-screenshot-card');
+            const overlay = document.querySelector('.screenshot-overlay');
+            const overlayImage = document.querySelector('.overlay-image');
+            const overlayClose = document.querySelector('.overlay-close');
+            
+            // Open overlay when clicking on a screenshot
+            screenshotCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const imgSrc = card.getAttribute('data-img');
+                    overlayImage.src = imgSrc;
+                    overlay.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                });
+            });
+            
+            // Close overlay when clicking on close button or outside the image
+            overlayClose.addEventListener('click', () => {
+                overlay.classList.remove('active');
+                document.body.style.overflow = ''; // Re-enable scrolling
+            });
+            
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = ''; // Re-enable scrolling
+                }
+            });
+            
+            // Close overlay with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && overlay.classList.contains('active')) {
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = ''; // Re-enable scrolling
+                }
+            });
+        });
+    </script>
+
+    <!-- Update JavaScript to include gallery functionality -->
+    <script>
+        // The overlay functionality has been removed as it's no longer needed
+    </script>
+
+    <!-- Add carousel functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get carousel elements
+            const prevBtn = document.getElementById('carouselPrev');
+            const nextBtn = document.getElementById('carouselNext');
+            const screenshots = document.querySelectorAll('.device-screen .app-screenshot');
+            const features = document.querySelectorAll('.carousel-feature');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            let currentIndex = 0;
+            const maxIndex = screenshots.length - 1;
+            
+            // Initialize carousel
+            updateCarousel(currentIndex);
+            
+            // Navigation functions
+            function updateCarousel(index) {
+                // Update screenshots
+                screenshots.forEach(screenshot => {
+                    if (parseInt(screenshot.dataset.index) === index) {
+                        screenshot.classList.add('active');
+                    } else {
+                        screenshot.classList.remove('active');
+                    }
+                });
+                
+                // Update features
+                features.forEach(feature => {
+                    if (parseInt(feature.dataset.index) === index) {
+                        feature.classList.add('active');
+                    } else {
+                        feature.classList.remove('active');
+                    }
+                });
+                
+                // Update dots
+                dots.forEach(dot => {
+                    if (parseInt(dot.dataset.index) === index) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+                
+                // Update current index
+                currentIndex = index;
+            }
+            
+            function goToPrev() {
+                const newIndex = currentIndex === 0 ? maxIndex : currentIndex - 1;
+                updateCarousel(newIndex);
+            }
+            
+            function goToNext() {
+                const newIndex = currentIndex === maxIndex ? 0 : currentIndex + 1;
+                updateCarousel(newIndex);
+            }
+            
+            // Event listeners
+            if (prevBtn) {
+                prevBtn.addEventListener('click', goToPrev);
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', goToNext);
+            }
+            
+            // Dot navigation
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    updateCarousel(parseInt(dot.dataset.index));
+                });
+            });
+            
+            // Auto-rotate every 5 seconds
+            let carouselInterval = setInterval(goToNext, 5000);
+            
+            // Pause auto-rotation when interacting
+            const carouselContainer = document.querySelector('.carousel-container');
+            if (carouselContainer) {
+                carouselContainer.addEventListener('mouseenter', () => {
+                    clearInterval(carouselInterval);
+                });
+                
+                carouselContainer.addEventListener('mouseleave', () => {
+                    carouselInterval = setInterval(goToNext, 5000);
+                });
+            }
+        });
+    </script>
+
+    <!-- Update JavaScript to handle app carousel -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get carousel elements
+            const deviceScreen = document.querySelector('.app-carousel-showcase .device-screen');
+            const featureContainer = document.querySelector('.app-carousel-showcase .feature-container');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            // Create arrays for images and features
+            const screenshots = Array.from(deviceScreen.querySelectorAll('.app-screenshot'));
+            const features = Array.from(featureContainer.querySelectorAll('.carousel-feature'));
+            
+            let currentIndex = 0;
+            
+            // Touch variables
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            // Function to update carousel with no transitions
+            function updateCarousel(index) {
+                // Set current index
+                currentIndex = index;
+                
+                // Update screenshots
+                screenshots.forEach((screenshot, i) => {
+                    if (i === currentIndex) {
+                        screenshot.style.display = 'block';
+                    } else {
+                        screenshot.style.display = 'none';
+                    }
+                });
+                
+                // Update features - completely remove and reinsert to prevent transition issues
+                // First remove all features from DOM
+                features.forEach(feature => {
+                    if (feature.parentNode) {
+                        feature.parentNode.removeChild(feature);
+                    }
+                });
+                
+                // Then insert just the active one
+                if (features[currentIndex]) {
+                    featureContainer.appendChild(features[currentIndex]);
+                }
+                
+                // Update dots
+                dots.forEach((dot, i) => {
+                    if (i === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Set up dot navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    updateCarousel(index);
+                });
+            });
+            
+            // Add touch event listeners for swipe support
+            const deviceContainer = document.querySelector('.device-container');
+            if (deviceContainer) {
+                deviceContainer.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, false);
+                
+                deviceContainer.addEventListener('touchend', function(e) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, false);
+            }
+            
+            // Handle swipe direction
+            function handleSwipe() {
+                const swipeThreshold = 50; // Minimum distance for a swipe
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Swipe left (next)
+                    let nextIndex = currentIndex + 1;
+                    if (nextIndex >= screenshots.length) nextIndex = 0;
+                    updateCarousel(nextIndex);
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    // Swipe right (previous)
+                    let prevIndex = currentIndex - 1;
+                    if (prevIndex < 0) prevIndex = screenshots.length - 1;
+                    updateCarousel(prevIndex);
+                }
+            }
+            
+            // Initialize with first item
+            updateCarousel(0);
+        });
+    </script>
+
+    <!-- Add carousel fix script to end of body -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Reset all carousel items
+            const carouselInit = function() {
+                const screenshots = document.querySelectorAll('.app-screenshot');
+                const features = document.querySelectorAll('.carousel-feature');
+                const dots = document.querySelectorAll('.carousel-dot');
+                
+                // Reset all items
+                screenshots.forEach((screenshot) => {
+                    screenshot.classList.remove('active');
+                });
+                
+                features.forEach((feature) => {
+                    feature.classList.remove('active');
+                });
+                
+                dots.forEach((dot) => {
+                    dot.classList.remove('active');
+                });
+                
+                // Make first items active
+                screenshots[0].classList.add('active');
+                features[0].classList.add('active');
+                dots[0].classList.add('active');
+            };
+            
+            // Initialize on page load
+            carouselInit();
+        });
+    </script>
+
+    <!-- Add scroll reveal animation functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if IntersectionObserver is supported
+            if ('IntersectionObserver' in window) {
+                // Select all sections that should be animated on scroll
+                const sections = document.querySelectorAll('.reveal-section');
+                
+                // Create the observer options
+                const options = {
+                    root: null, // Use the viewport as the root
+                    rootMargin: '0px', // No margin
+                    threshold: 0.15 // Trigger when 15% of the element is visible
+                };
+                
+                // Create the observer
+                const observer = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(entry => {
+                        // If the element is in the viewport
+                        if (entry.isIntersecting) {
+                            // Add the active class to start the animation
+                            entry.target.classList.add('active');
+                            // Once it's been animated, no need to observe it anymore
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, options);
+                
+                // Start observing each section
+                sections.forEach(section => {
+                    observer.observe(section);
+                });
+            } else {
+                // Fallback for browsers that don't support IntersectionObserver
+                const sections = document.querySelectorAll('.reveal-section');
+                sections.forEach(section => {
+                    section.classList.add('active');
+                });
+            }
+            
+            // Add animation for comparison columns
+            const comparisonColumns = document.querySelectorAll('.comparison-column');
+            
+            const comparisonObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Add delay based on index (the second column appears slightly after the first)
+                        setTimeout(() => {
+                            entry.target.classList.add('animate-in');
+                        }, index * 200); // 200ms delay between columns
+                        comparisonObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            comparisonColumns.forEach(column => {
+                column.classList.add('pre-animation');
+                comparisonObserver.observe(column);
+            });
+            
+            // Add animation for comparison note
+            const comparisonNote = document.querySelector('.comparison-note');
+            if (comparisonNote) {
+                comparisonNote.classList.add('pre-animation');
+                
+                const noteObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            setTimeout(() => {
+                                entry.target.classList.add('animate-in');
+                            }, 400); // Add a delay after the columns
+                            noteObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                noteObserver.observe(comparisonNote);
+            }
+            
+            // Add animation for FAQ items
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            const faqObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Add delay based on index
+                        setTimeout(() => {
+                            entry.target.classList.add('animate-in');
+                        }, index * 100); // 100ms delay between each FAQ item
+                        faqObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            faqItems.forEach(item => {
+                item.classList.add('pre-animation');
+                faqObserver.observe(item);
+            });
+        });
+    </script>
+    
+    <!-- App Feature Carousel functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all elements for the app feature carousel
+            const screenshots = document.querySelectorAll('.app-screenshot');
+            const textContainers = document.querySelectorAll('.feature-text-container');
+            const prevBtn = document.querySelector('.carousel-prev');
+            const nextBtn = document.querySelector('.carousel-next');
+            
+            let currentIndex = 0;
+            const maxIndex = screenshots.length - 1;
+            let carouselInterval;
+            
+            // Initialize carousel with first feature
+            function initCarousel() {
+                updateCarousel(0);
+                startAutoRotation();
+            }
+            
+            // Function to update carousel display
+            function updateCarousel(index) {
+                // Update current index
+                currentIndex = index;
+                
+                // Update screenshots
+                screenshots.forEach(screenshot => {
+                    if (parseInt(screenshot.dataset.index) === index) {
+                        screenshot.classList.add('active');
+                    } else {
+                        screenshot.classList.remove('active');
+                    }
+                });
+                
+                // Update text containers
+                textContainers.forEach(container => {
+                    if (parseInt(container.dataset.index) === index) {
+                        container.classList.add('active');
+                    } else {
+                        container.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Navigation functions
+            function goToPrev() {
+                const newIndex = currentIndex === 0 ? maxIndex : currentIndex - 1;
+                updateCarousel(newIndex);
+                restartAutoRotation();
+            }
+            
+            function goToNext() {
+                const newIndex = currentIndex === maxIndex ? 0 : currentIndex + 1;
+                updateCarousel(newIndex);
+                restartAutoRotation();
+            }
+            
+            // Auto rotation functions
+            function startAutoRotation() {
+                // Clear any existing interval
+                if (carouselInterval) {
+                    clearInterval(carouselInterval);
+                }
+                // Start a new interval
+                carouselInterval = setInterval(goToNext, 6000); // 6 seconds per feature
+            }
+            
+            function restartAutoRotation() {
+                clearInterval(carouselInterval);
+                startAutoRotation();
+            }
+            
+            // Set up navigation event listeners
+            if (prevBtn) {
+                prevBtn.addEventListener('click', goToPrev);
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', goToNext);
+            }
+            
+            // Touch events for swipe support
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            const carousel = document.querySelector('.app-feature-carousel');
+            
+            if (carousel) {
+                carousel.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, {passive: true});
+                
+                carousel.addEventListener('touchend', function(e) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, {passive: true});
+                
+                // Pause auto-rotation when interacting
+                carousel.addEventListener('mouseenter', () => {
+                    clearInterval(carouselInterval);
+                });
+                
+                carousel.addEventListener('mouseleave', () => {
+                    startAutoRotation();
+                });
+            }
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Swipe left (next)
+                    goToNext();
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    // Swipe right (previous)
+                    goToPrev();
+                }
+            }
+            
+            // Initialize the carousel
+            initCarousel();
+            
+            // Make first screenshot and text visible initially
+            if (screenshots.length > 0) {
+                screenshots[0].classList.add('active');
+                textContainers[0].classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html> 
