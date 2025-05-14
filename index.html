@@ -46,12 +46,6 @@
             font-weight: 800;
         }
         
-        /* Add this style for solving the line between CTA and footer */
-        .cta-footer-wrapper {
-            display: block; /* Always a block to ensure continuity */
-            background: linear-gradient(to right, var(--primary-dark), var(--primary-color), var(--primary-dark));
-        }
-        
         .container {
             width: 90%;
             max-width: 1040px;
@@ -831,11 +825,6 @@
             border-bottom: none;
         }
         
-        /* When inside the wrapper, remove the background */
-        .cta-footer-wrapper .cta-section {
-            background: none;
-        }
-        
         .cta-section h2 {
             margin-bottom: 30px;
             color: var(--white);
@@ -877,16 +866,11 @@
         
         /* Footer */
         .footer {
+            background: linear-gradient(to right, var(--primary-dark), var(--primary-color), var(--primary-dark));
             color: var(--white);
             padding: 40px 0 30px;
             text-align: center;
             border-top: none;
-        }
-        
-        /* When inside the wrapper, remove the background and reduce top padding */
-        .cta-footer-wrapper .footer {
-            background: none;
-            padding-top: 20px;
         }
 
         .footer-logo {
@@ -2451,43 +2435,6 @@
             font-weight: 500;
             line-height: 1.5;
         }
-
-        /* Add a new style for mobile that makes the CTA and footer appear as one element */
-        .cta-footer-wrapper {
-            display: contents; /* By default, this behaves like the elements aren't wrapped */
-        }
-
-        @media (max-width: 900px) {
-            /* Make CTA and footer part of a single continuous element on mobile */
-            .cta-footer-wrapper {
-                display: block; /* Show as a single container on mobile */
-                background: linear-gradient(to right, var(--primary-dark), var(--primary-color), var(--primary-dark));
-            }
-            
-            /* Remove individual backgrounds and padding adjustments for mobile */
-            .cta-footer-wrapper .cta-section,
-            .cta-footer-wrapper .footer {
-                background: none;
-                margin: 0;
-                padding-top: 40px;
-                padding-bottom: 40px;
-                border: none;
-            }
-            
-            /* No top padding for footer to eliminate any gap */
-            .cta-footer-wrapper .footer {
-                padding-top: 0;
-            }
-
-            .container {
-                width: 95%;
-                padding: 0 16px;
-            }
-            
-            .site-header {
-                padding: 20px 0;
-            }
-        }
     </style>
 </head>
 <body>
@@ -3228,32 +3175,30 @@
         </div>
     </section>
 
-    <!-- Wrapper for CTA and Footer -->
-    <div class="cta-footer-wrapper">
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="container">
-                <h2>Ready to perform better on the mats?</h2>
-                <a href="#assessment-form" class="hero-cta">Get Your Free BJJ Nutrition Assessment</a>
-                <p class="cta-subheadline">Stop wasting your potential — start fueling your BJJ today</p>
-            </div>
-        </section>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <img src="https://framerusercontent.com/images/BWEaipn67Qc3Jg3inQssO6rrJ4.png" alt="Nutrion Health" class="footer-logo">
-                <div class="footer-links">
-                    <!-- <a href="#" class="footer-link">About Us</a>
-                    <a href="pricing.html" class="footer-link">Pricing</a>
-                    <a href="#" class="footer-link">Contact</a>
-                    <a href="#" class="footer-link">Privacy Policy</a>
-                    <a href="#" class="footer-link">Terms of Service</a> -->
-                </div>
-                <p class="copyright">© 2025 Nutrion Health. All rights reserved.</p>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to perform better on the mats?</h2>
+            <a href="#assessment-form" class="hero-cta">Get Your Free BJJ Nutrition Assessment</a>
+            <p class="cta-subheadline">Stop wasting your potential — start fueling your BJJ today</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <img src="https://framerusercontent.com/images/BWEaipn67Qc3Jg3inQssO6rrJ4.png" alt="Nutrion Health" class="footer-logo">
+            <div class="footer-links">
+                <!-- <a href="#" class="footer-link">About Us</a>
+                <a href="pricing.html" class="footer-link">Pricing</a>
+                <a href="#" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a> -->
             </div>
-        </footer>
-    </div>
+            <p class="copyright">© 2025 Nutrion Health. All rights reserved.</p>
+        </div>
+    </footer>
 
    
     <script>
