@@ -46,6 +46,12 @@
             font-weight: 800;
         }
         
+        /* Add this style for solving the line between CTA and footer */
+        .cta-footer-wrapper {
+            display: block; /* Always a block to ensure continuity */
+            background: linear-gradient(to right, var(--primary-dark), var(--primary-color), var(--primary-dark));
+        }
+        
         .container {
             width: 90%;
             max-width: 1040px;
@@ -816,12 +822,18 @@
             }
         }
         
-        /* CTA Section */
+        /* Updated CTA section with adjusted padding */
         .cta-section {
-            padding: 90px 0;
+            padding: 90px 0 70px;
             text-align: center;
-            background: linear-gradient(140deg, var(--primary-light) 0%, var(--primary-color) 100%);
+            background: linear-gradient(to right, var(--primary-dark), var(--primary-color), var(--primary-dark));
             color: var(--white);
+            border-bottom: none;
+        }
+        
+        /* When inside the wrapper, remove the background */
+        .cta-footer-wrapper .cta-section {
+            background: none;
         }
         
         .cta-section h2 {
@@ -830,39 +842,68 @@
             font-size: 36px;
         }
         
+        /* Enhanced CTA button */
         .cta-section .hero-cta {
             margin-bottom: 0;
             background-color: var(--white);
             color: var(--primary-color);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+            font-size: 1.1rem;
+            padding: 18px 38px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
         
         .cta-section .hero-cta:hover {
             background-color: var(--light-gray);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* CTA subheadline styling */
+        .cta-subheadline {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-top: 25px;
+            margin-bottom: 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0.2px;
         }
         
         /* Footer */
         .footer {
-            background-color: var(--primary-dark);
             color: var(--white);
-            padding: 60px 0 30px;
+            padding: 40px 0 30px;
             text-align: center;
+            border-top: none;
         }
         
+        /* When inside the wrapper, remove the background and reduce top padding */
+        .cta-footer-wrapper .footer {
+            background: none;
+            padding-top: 20px;
+        }
+
         .footer-logo {
             max-width: 120px;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
+            filter: brightness(0) invert(1); /* Make the logo white for better contrast */
         }
         
-        .footer-links {
+        /* .footer-links {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 30px;
             margin-bottom: 30px;
-        }
+        } */
         
-        .footer-link {
+        /* .footer-link {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             font-size: 0.95rem;
@@ -871,12 +912,12 @@
         
         .footer-link:hover {
             color: var(--white);
-        }
+        } */
         
         .copyright {
             color: rgba(255, 255, 255, 0.5);
             font-size: 0.875rem;
-            margin-top: 20px;
+            margin-top: 10px;
         }
         
         /* Responsive */
@@ -892,6 +933,12 @@
             
             .logo {
                 max-width: 80px; /* Smaller logo on mobile */
+            }
+            
+            /* Add specific styles to fix the border issue */
+            .cta-section, .footer {
+                border-top: 0 !important;
+                border-bottom: 0 !important;
             }
             
             .hero {
@@ -1835,51 +1882,173 @@
 
         /* Mobile Responsiveness for Carousel */
         @media (max-width: 900px) {
+            .app-showcase {
+                padding: 60px 0 20px;
+            }
+            
+            .app-showcase h2 {
+                font-size: 28px;
+                margin-bottom: 10px;
+            }
+            
+            .app-showcase .support-subtitle {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            
             .feature-container {
                 flex-direction: column;
                 min-height: auto;
+                padding-bottom: 0;
+                margin-bottom: 0;
             }
-
-            .device-frame-container, 
-            .feature-text-container {
-                flex: 0 0 100%;
-                width: 100%;
+            
+            .device-frame-container {
                 position: relative;
                 transform: none;
                 top: auto;
                 left: auto;
                 right: auto;
+                width: 100%;
+                max-width: 250px;
+                margin: 0 auto 20px;
             }
-
-            .device-frame-container {
-                margin-bottom: 30px;
+            
+            .device-frame {
+                width: 250px;
+                height: 542px;
+                border-radius: 36px;
+                transform: scale(1);
+                margin: 0 auto;
             }
-
+            
+            .device-screen {
+                border-radius: 33px;
+            }
+            
+            .device-notch {
+                width: 25%;
+                height: 14px;
+            }
+            
             .feature-text-container {
-                margin-top: 30px;
-                margin-bottom: 30px;
-                padding: 30px;
-                visibility: visible;
-                /* opacity: 1;
-                border-top: 4px solid var(--accent-color); */
-            }
-
-            .feature-text-container.active {
+                position: relative;
                 transform: none;
-            }
-
-            .carousel-nav {
                 top: auto;
-                bottom: 20px;
+                left: auto;
+                right: auto;
+                width: 90%;
+                max-width: 320px;
+                margin: 0 auto;
+                padding: 10px 15px;
+                visibility: hidden;
+                opacity: 0;
+                display: none;
+                border-top: 4px solid var(--accent-color);
+                text-align: center;
+            }
+            
+            /* Hide paragraph text on mobile */
+            .feature-text-container .app-feature-text {
+                display: none;
+            }
+            
+            .feature-text-container.active {
+                display: block;
+                visibility: visible;
+                opacity: 1;
                 transform: none;
             }
-
-            .carousel-prev {
-                left: calc(50% - 50px);
+            
+            /* Reset positioning for all features on mobile */
+            .feature-container:nth-child(even) .feature-text-container,
+            .feature-container:nth-child(odd) .feature-text-container {
+                left: auto;
+                right: auto;
             }
+            
+            .feature-container:nth-child(even) .device-frame-container,
+            .feature-container:nth-child(odd) .device-frame-container {
+                left: auto;
+                right: auto;
+            }
+            
+            /* Hide navigation on mobile */
+            .carousel-nav {
+                display: none;
+            }
+            
+            /* App feature elements styling for mobile */
+            .app-feature-icon {
+                font-size: 28px;
+                margin-bottom: 8px;
+            }
+            
+            .app-feature-title {
+                font-size: 1.2rem;
+                margin-bottom: 0;
+                color: var(--primary-color);
+            }
+            
+            /* EXTREME button spacing fix for mobile */
+            .app-showcase .text-center {
+                margin-top: 10px !important; /* Change to positive 10px spacing */
+                padding-top: 0 !important;
+                position: relative;
+                z-index: 5;
+            }
+            
+            /* Make button directly attached to feature box */
+            .app-showcase .hero-cta {
+                margin-top: 0 !important;
+                position: relative;
+                z-index: 5;
+                border-radius: 8px; /* Restore regular border radius */
+                border-top: none; /* Remove connecting border */
+            }
+            
+            /* Modify feature box bottom to connect with button */
+            .feature-text-container.active {
+                border-radius: 8px; /* Restore regular border radius */
+                margin-bottom: 10px !important; /* Add exactly 10px margin */
+                border-bottom: initial !important; /* Restore default border */
+            }
+        }
 
-            .carousel-next {
-                right: calc(50% - 50px);
+        /* Further adjustments for very small screens */
+        @media (max-width: 400px) {
+            .device-frame-container {
+                max-width: 220px;
+                margin: 0 auto 16px;
+            }
+            
+            .device-frame {
+                width: 220px;
+                height: 477px;
+                border-radius: 32px;
+            }
+            
+            .device-screen {
+                border-radius: 29px;
+            }
+            
+            .feature-text-container {
+                padding: 8px 10px;
+                max-width: 280px;
+            }
+            
+            .app-feature-icon {
+                font-size: 26px;
+                margin-bottom: 6px;
+            }
+            
+            .app-feature-title {
+                font-size: 1.1rem;
+            }
+            
+            /* Maintain extreme negative margin for very small screens */
+            .app-showcase .text-center {
+                margin-top: -25px !important;
             }
         }
 
@@ -1904,6 +2073,420 @@
             color: var(--text-color-dark);
             line-height: 1.5;
             text-align: center;
+        }
+
+        /* Free Assessment Section Styles */
+        .free-assessment {
+            padding: 90px 0;
+            background-color: var(--white);
+        }
+
+        .free-assessment h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 36px;
+            color: var(--primary-color);
+        }
+
+        .assessment-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--medium-gray);
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .assessment-item {
+            background-color: var(--light-gray);
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .assessment-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .assessment-icon {
+            font-size: 24px;
+            color: var(--accent-color);
+            margin-right: 20px;
+            padding-top: 3px;
+        }
+
+        .assessment-content {
+            flex: 1;
+        }
+
+        .assessment-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .assessment-description {
+            font-size: 0.95rem;
+            color: var(--text-color-dark);
+            line-height: 1.5;
+        }
+
+        .assessment-note {
+            background-color: rgba(255, 153, 0, 0.1);
+            border-left: 3px solid var(--accent-color);
+            padding: 15px 20px;
+            margin: 0 auto 40px;
+            max-width: 800px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .assessment-note p {
+            font-size: 0.95rem;
+            color: var(--text-color-dark);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .assessment-cta {
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .assessment-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .assessment-item {
+                flex-direction: column;
+            }
+            
+            .assessment-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+                font-size: 28px;
+                text-align: center;
+            }
+            
+            .assessment-title {
+                text-align: center;
+            }
+            
+            .assessment-description {
+                text-align: center;
+            }
+        }
+        
+        /* Updated Assessment Item Styles to Match Screenshot Design */
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .assessment-item {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 50px 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: none;
+            border-top: 4px solid var(--accent-color);
+            display: block;
+        }
+
+        .assessment-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .assessment-icon {
+            font-size: 36px;
+            width: auto;
+            height: auto;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            display: block;
+            margin-right: 0;
+            padding-top: 0;
+            text-align: center;
+        }
+
+        .assessment-content {
+            display: block;
+            text-align: center;
+        }
+
+        .assessment-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .assessment-description {
+            font-size: 0.95rem;
+            color: var(--text-color-dark);
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .assessment-item {
+                padding: 40px 20px;
+            }
+        }
+
+        /* Maintain consistent spacing on small screens */
+        .app-showcase .text-center {
+            margin-top: 10px !important;
+        }
+
+        /* Maintain consistent 10px spacing on very small screens */
+        .app-showcase .text-center {
+            margin-top: 10px !important;
+        }
+
+        /* Maintain 10px spacing for very small screens */
+        .app-showcase .text-center {
+            margin-top: 10px !important;
+        }
+
+        /* Assessment Form Styles */
+        .assessment-form {
+            padding: 120px 0;
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+        
+        .assessment-form h2 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-size: 36px;
+        }
+        
+        .assessment-form-subtitle {
+            font-size: 1.1rem;
+            color: var(--medium-gray);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+        
+        .bjj-form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.1);
+        }
+        
+        .form-check {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        
+        .form-check:last-of-type {
+            margin-bottom: 0;
+        }
+        
+        .form-check input {
+            margin-top: 5px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        .form-check label {
+            font-size: 16px;
+            color: var(--text-color-dark);
+        }
+        
+        .checkbox-container {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+        }
+        
+        .form-privacy {
+            margin: 0;
+            padding-top: 5px;
+            font-size: 0.85rem;
+            color: var(--medium-gray);
+            line-height: 1.4;
+        }
+        
+        .form-submit {
+            margin-top: 0;
+            margin-bottom: 0;
+            width: 100%;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            padding: 18px 3px;
+            font-size: 18px;
+        }
+        
+        .form-submit:hover {
+            transform: translateY(-3px);
+        }
+        
+        .form-message {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        
+        .form-message.success {
+            background-color: rgba(62, 207, 142, 0.1);
+            color: var(--success);
+            margin-top: 5px;
+        }
+        
+        .form-message.error {
+            background-color: rgba(255, 76, 76, 0.1);
+            color: #ff4c4c;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 900px) {
+            .assessment-form {
+                padding: 80px 0;
+            }
+            
+            .assessment-form h2 {
+                font-size: 28px;
+            }
+            
+            .assessment-form-subtitle {
+                display: none; /* Hide subtitle on mobile */
+            }
+            
+            .form-container {
+                padding: 25px;
+                width: 90%;
+            }
+            
+            .form-group {
+                margin-bottom: 20px;
+            }
+            
+            .form-group input {
+                padding: 10px 12px;
+                font-size: 15px;
+            }
+            
+            .form-check label {
+                font-size: 15px;
+            }
+        }
+        
+        /* Add error styling to the form fields */
+        .form-group.error input {
+            border-color: #ff4c4c;
+            background-color: rgba(255, 76, 76, 0.05);
+        }
+        
+        .form-check.error {
+            color: #ff4c4c;
+        }
+        
+        .form-message.error {
+            background-color: rgba(255, 76, 76, 0.1);
+            color: #ff4c4c;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* Add a new style for mobile that makes the CTA and footer appear as one element */
+        .cta-footer-wrapper {
+            display: contents; /* By default, this behaves like the elements aren't wrapped */
+        }
+
+        @media (max-width: 900px) {
+            /* Make CTA and footer part of a single continuous element on mobile */
+            .cta-footer-wrapper {
+                display: block; /* Show as a single container on mobile */
+                background: linear-gradient(to right, var(--primary-dark), var(--primary-color), var(--primary-dark));
+            }
+            
+            /* Remove individual backgrounds and padding adjustments for mobile */
+            .cta-footer-wrapper .cta-section,
+            .cta-footer-wrapper .footer {
+                background: none;
+                margin: 0;
+                padding-top: 40px;
+                padding-bottom: 40px;
+                border: none;
+            }
+            
+            /* No top padding for footer to eliminate any gap */
+            .cta-footer-wrapper .footer {
+                padding-top: 0;
+            }
+
+            .container {
+                width: 95%;
+                padding: 0 16px;
+            }
+            
+            .site-header {
+                padding: 20px 0;
+            }
         }
     </style>
 </head>
@@ -1934,7 +2517,8 @@
                     </div>
                 </div>
                 
-                <a href="https://f19cdvsmvlk.typeform.com/to/O8K7o2hl?utm_source=homepage" class="hero-cta" target="_blank">Get Your Free BJJ Nutrition Assessment</a>
+                <!-- Hero CTA Button -->
+                <a href="#assessment-form" class="hero-cta">Get Your Free BJJ Nutrition Assessment</a>
             </div>
         </div>
         <div class="scroll-indicator" aria-hidden="true"></div>
@@ -1978,8 +2562,9 @@
                 </div>
             </div>
             
+            <!-- Features Section CTA -->
             <div class="text-center" style="margin-top: 40px;">
-                <a href="https://f19cdvsmvlk.typeform.com/to/O8K7o2hl?utm_source=homepage" class="hero-cta" target="_blank">Get Your Free BJJ Nutrition Assessment</a>
+                <a href="#assessment-form" class="hero-cta">Get Your Free BJJ Nutrition Assessment</a>
             </div>
         </div>
     </section>
@@ -2081,7 +2666,8 @@
                         <div class="credential"><i class="fa-solid fa-globe"></i> Clients in 10+ Countries</div>
                     </div>
                     
-                    <a href="https://f19cdvsmvlk.typeform.com/to/O8K7o2hl?utm_source=homepage" class="hero-cta" target="_blank">Get Your Free BJJ Nutrition Assessment</a>
+                    <!-- Intro Section CTA -->
+                    <a href="#assessment-form" class="hero-cta">Get Your Free BJJ Nutrition Assessment</a>
                 </div>
                 <div class="intro-image-wrapper" style="padding-top: 90px;">
                     <div class="intro-image">
@@ -2123,8 +2709,9 @@
                         <div class="credential"><i class="fa-solid fa-globe"></i> Clients in 10+ Countries</div>
                     </div>
                     
+                    <!-- Mobile-specific layout CTA -->
                     <div style="text-align: center; margin-top: 25px;">
-                        <a href="https://f19cdvsmvlk.typeform.com/to/O8K7o2hl?utm_source=homepage" class="hero-cta" target="_blank">Get Your Free BJJ Nutrition Assessment</a>
+                        <a href="#assessment-form" class="hero-cta">Get Your Free BJJ Nutrition Assessment</a>
                     </div>
                 </div>
             </div>
@@ -2358,8 +2945,9 @@
                 </div>
             </div>
             
+            <!-- App Showcase CTA -->
             <div class="text-center" style="margin-top: 60px;">
-                <a href="https://f19cdvsmvlk.typeform.com/to/O8K7o2hl?utm_source=homepage" class="hero-cta" target="_blank">Get Your Free BJJ Nutrition Assessment</a>
+                <a href="#assessment-form" class="hero-cta">Get Your Free BJJ Nutrition Assessment</a>
             </div>
         </div>
     </section>
@@ -2481,8 +3069,9 @@
                 <p class="comparison-note-content"><strong>"As a BJJ athlete myself, I know that generic nutrition advice rarely works for our sport. That's why I've built a program that addresses the specific challenges we face on and off the mats."</strong> — Daniel Caetano, Nutritionist & BJJ Black Belt</p>
             </div>
             
+            <!-- Comparison CTA -->
             <div class="comparison-cta">
-                <a href="https://f19cdvsmvlk.typeform.com/to/O8K7o2hl?utm_source=homepage" class="hero-cta" target="_blank">Get Your Free BJJ Nutrition Assessment</a>
+                <a href="#assessment-form" class="hero-cta">Get Your Free BJJ Nutrition Assessment</a>
             </div>
         </div>
     </section>
@@ -2554,29 +3143,119 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- Free Assessment Section -->
+    <section class="free-assessment">
         <div class="container">
-            <h2>Ready to perform better on the mats?</h2>
-            <a href="https://f19cdvsmvlk.typeform.com/to/O8K7o2hl?utm_source=homepage" class="hero-cta" target="_blank">Get Your Free BJJ Nutrition Assessment</a>
+            <h2>What's Included in Your Free BJJ Nutrition Assessment?</h2>
+            
+            <div class="assessment-grid">
+                <div class="assessment-item">
+                    <div class="assessment-icon">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <div class="assessment-content">
+                        <h3 class="assessment-title">Comprehensive Diet Analysis</h3>
+                        <p class="assessment-description">We analyze what you're eating, drinking, and when, then evaluate how your current nutrition aligns with your BJJ goals and training schedule.</p>
+                    </div>
+                </div>
+                
+                <div class="assessment-item">
+                    <div class="assessment-icon">
+                        <i class="fa-solid fa-file-circle-check"></i>
+                    </div>
+                    <div class="assessment-content">
+                        <h3 class="assessment-title">Targeted Feedback Report</h3>
+                        <p class="assessment-description">Receive personalized insights highlighting both the strong points of your current approach and specific areas for improvement, with actionable recommendations.</p>
+                    </div>
+                </div>
+                
+                <div class="assessment-item">
+                    <div class="assessment-icon">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                    <div class="assessment-content">
+                        <h3 class="assessment-title">Free Consultation Call</h3>
+                        <p class="assessment-description">Get a complimentary call with our BJJ nutrition expert to discuss your results, ask questions, and learn how proper nutrition can help you reach your specific goals.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="assessment-note">
+                <p><strong>Note:</strong> This assessment is exclusively for active BJJ practitioners who are 18+ years old.</p>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Free Assessment Form Section -->
+    <section id="assessment-form" class="assessment-form">
         <div class="container">
-            <img src="https://framerusercontent.com/images/BWEaipn67Qc3Jg3inQssO6rrJ4.png" alt="Nutrion Health" class="footer-logo">
-            <div class="footer-links">
-                <a href="#" class="footer-link">About Us</a>
-                <a href="pricing.html" class="footer-link">Pricing</a>
-                <a href="#" class="footer-link">Contact</a>
-                <a href="#" class="footer-link">Privacy Policy</a>
-                <a href="#" class="footer-link">Terms of Service</a>
-            </div>
-            <p class="copyright">© 2023 Nutrion Health. All rights reserved.</p>
-        </div>
-    </footer>
+            <h2>Get Your Free BJJ Nutrition Assessment</h2>
+            <p class="assessment-form-subtitle">Get expert nutrition guidance tailored for BJJ athletes and a free 1-on-1 consultation</p>
 
+            <div class="form-container">
+                <form id="bjj-assessment-form" class="bjj-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="checkbox-container">
+                        <div class="form-check">
+                            <input type="checkbox" id="is-bjj" name="is_active_bjj" required>
+                            <label for="is-bjj">I am an active BJJ practitioner ready to level up my performance</label>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input type="checkbox" id="is-adult" name="is_over_18" required>
+                            <label for="is-adult">I am 18 years or older</label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="hero-cta form-submit">Yes, I Want My FREE Analysis</button>
+                    
+                    <div class="form-message" id="form-message"></div>
+                    
+                    <div class="form-privacy">
+                        <p style="margin: 8px 0 0; padding: 0;">By submitting this form, you agree to receive email communications from Nutrion Health. We'll never share your information. You can unsubscribe at any time.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wrapper for CTA and Footer -->
+    <div class="cta-footer-wrapper">
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to perform better on the mats?</h2>
+                <a href="#assessment-form" class="hero-cta">Get Your Free BJJ Nutrition Assessment</a>
+                <p class="cta-subheadline">Stop wasting your potential — start fueling your BJJ today</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <img src="https://framerusercontent.com/images/BWEaipn67Qc3Jg3inQssO6rrJ4.png" alt="Nutrion Health" class="footer-logo">
+                <div class="footer-links">
+                    <!-- <a href="#" class="footer-link">About Us</a>
+                    <a href="pricing.html" class="footer-link">Pricing</a>
+                    <a href="#" class="footer-link">Contact</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a> -->
+                </div>
+                <p class="copyright">© 2025 Nutrion Health. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+   
     <script>
         // Simple FAQ toggle functionality
         document.querySelectorAll('.faq-question').forEach(question => {
@@ -2602,7 +3281,138 @@
             });
         });
     </script>
-    
+
+    <!-- Form Submission Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all CTA buttons that should scroll to the form
+            const ctaButtons = document.querySelectorAll('a.hero-cta[href="#assessment-form"]');
+            const form = document.getElementById('assessment-form');
+            
+            // Add click handlers to CTA buttons to scroll to the form
+            ctaButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    form.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+            
+            // Form submission handler
+            const bjjForm = document.getElementById('bjj-assessment-form');
+            const formMessage = document.getElementById('form-message');
+            
+            bjjForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Reset any previous error messages
+                formMessage.textContent = '';
+                formMessage.className = 'form-message';
+                
+                // Remove any previous error styling
+                document.querySelectorAll('.form-group.error, .form-check.error').forEach(el => {
+                    el.classList.remove('error');
+                });
+                
+                // Basic client-side validation
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const isBjj = document.getElementById('is-bjj').checked;
+                const isAdult = document.getElementById('is-adult').checked;
+                
+                let hasErrors = false;
+                let errorMessage = 'Please correct the following:';
+                
+                // Check each field and apply error styling
+                if (!name) {
+                    document.getElementById('name').parentElement.classList.add('error');
+                    errorMessage += '<br>• Enter your name';
+                    hasErrors = true;
+                }
+                
+                if (!email) {
+                    document.getElementById('email').parentElement.classList.add('error');
+                    errorMessage += '<br>• Enter your email address';
+                    hasErrors = true;
+                } else if (!isValidEmail(email)) {
+                    document.getElementById('email').parentElement.classList.add('error');
+                    errorMessage += '<br>• Enter a valid email address';
+                    hasErrors = true;
+                }
+                
+                if (!isBjj) {
+                    document.getElementById('is-bjj').parentElement.classList.add('error');
+                    errorMessage += '<br>• Confirm you are an active BJJ practitioner';
+                    hasErrors = true;
+                }
+                
+                if (!isAdult) {
+                    document.getElementById('is-adult').parentElement.classList.add('error');
+                    errorMessage += '<br>• Confirm you are 18 years or older';
+                    hasErrors = true;
+                }
+                
+                if (hasErrors) {
+                    formMessage.innerHTML = errorMessage;
+                    formMessage.className = 'form-message error';
+                    return;
+                }
+                
+                // If validation passes, prepare form data
+                const formData = {
+                    name: name,
+                    email: email,
+                    is_active_bjj: isBjj,
+                    is_over_18: isAdult,
+                    submission_date: new Date().toISOString()
+                };
+                
+                // Show loading state
+                const submitButton = bjjForm.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.textContent;
+                submitButton.textContent = 'Submitting...';
+                submitButton.disabled = true;
+                
+                // Send data to Zapier webhook
+                fetch('https://hooks.zapier.com/hooks/catch/15710462/27301n5/', {
+                    method: 'POST',
+                    body: JSON.stringify(formData),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Success! Show success message and reset form
+                    formMessage.textContent = 'Thank you! Your assessment request has been submitted successfully.';
+                    formMessage.className = 'form-message success';
+                    bjjForm.reset();
+                })
+                .catch(error => {
+                    // Handle error
+                    console.error('Error:', error);
+                    formMessage.textContent = 'There was an error submitting your request. Please try again.';
+                    formMessage.className = 'form-message error';
+                })
+                .finally(() => {
+                    // Reset button
+                    submitButton.textContent = originalButtonText;
+                    submitButton.disabled = false;
+                });
+            });
+            
+            // Email validation helper
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+        });
+    </script>
+
     <!-- Animation script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -2739,375 +3549,6 @@
     });
     </script>
 
-    <!-- Add JavaScript for screenshot viewer at the end of the body tag -->
-    <script>
-        // Initialize screenshot viewer
-        document.addEventListener('DOMContentLoaded', function() {
-            const screenshotCards = document.querySelectorAll('.app-screenshot-card');
-            const overlay = document.querySelector('.screenshot-overlay');
-            const overlayImage = document.querySelector('.overlay-image');
-            const overlayClose = document.querySelector('.overlay-close');
-            
-            // Open overlay when clicking on a screenshot
-            screenshotCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const imgSrc = card.getAttribute('data-img');
-                    overlayImage.src = imgSrc;
-                    overlay.classList.add('active');
-                    document.body.style.overflow = 'hidden'; // Prevent scrolling
-                });
-            });
-            
-            // Close overlay when clicking on close button or outside the image
-            overlayClose.addEventListener('click', () => {
-                overlay.classList.remove('active');
-                document.body.style.overflow = ''; // Re-enable scrolling
-            });
-            
-            overlay.addEventListener('click', (e) => {
-                if (e.target === overlay) {
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = ''; // Re-enable scrolling
-                }
-            });
-            
-            // Close overlay with Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && overlay.classList.contains('active')) {
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = ''; // Re-enable scrolling
-                }
-            });
-        });
-    </script>
-
-    <!-- Update JavaScript to include gallery functionality -->
-    <script>
-        // The overlay functionality has been removed as it's no longer needed
-    </script>
-
-    <!-- Add carousel functionality -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get carousel elements
-            const prevBtn = document.getElementById('carouselPrev');
-            const nextBtn = document.getElementById('carouselNext');
-            const screenshots = document.querySelectorAll('.device-screen .app-screenshot');
-            const features = document.querySelectorAll('.carousel-feature');
-            const dots = document.querySelectorAll('.carousel-dot');
-            
-            let currentIndex = 0;
-            const maxIndex = screenshots.length - 1;
-            
-            // Initialize carousel
-            updateCarousel(currentIndex);
-            
-            // Navigation functions
-            function updateCarousel(index) {
-                // Update screenshots
-                screenshots.forEach(screenshot => {
-                    if (parseInt(screenshot.dataset.index) === index) {
-                        screenshot.classList.add('active');
-                    } else {
-                        screenshot.classList.remove('active');
-                    }
-                });
-                
-                // Update features
-                features.forEach(feature => {
-                    if (parseInt(feature.dataset.index) === index) {
-                        feature.classList.add('active');
-                    } else {
-                        feature.classList.remove('active');
-                    }
-                });
-                
-                // Update dots
-                dots.forEach(dot => {
-                    if (parseInt(dot.dataset.index) === index) {
-                        dot.classList.add('active');
-                    } else {
-                        dot.classList.remove('active');
-                    }
-                });
-                
-                // Update current index
-                currentIndex = index;
-            }
-            
-            function goToPrev() {
-                const newIndex = currentIndex === 0 ? maxIndex : currentIndex - 1;
-                updateCarousel(newIndex);
-            }
-            
-            function goToNext() {
-                const newIndex = currentIndex === maxIndex ? 0 : currentIndex + 1;
-                updateCarousel(newIndex);
-            }
-            
-            // Event listeners
-            if (prevBtn) {
-                prevBtn.addEventListener('click', goToPrev);
-            }
-            
-            if (nextBtn) {
-                nextBtn.addEventListener('click', goToNext);
-            }
-            
-            // Dot navigation
-            dots.forEach(dot => {
-                dot.addEventListener('click', () => {
-                    updateCarousel(parseInt(dot.dataset.index));
-                });
-            });
-            
-            // Auto-rotate every 5 seconds
-            let carouselInterval = setInterval(goToNext, 5000);
-            
-            // Pause auto-rotation when interacting
-            const carouselContainer = document.querySelector('.carousel-container');
-            if (carouselContainer) {
-                carouselContainer.addEventListener('mouseenter', () => {
-                    clearInterval(carouselInterval);
-                });
-                
-                carouselContainer.addEventListener('mouseleave', () => {
-                    carouselInterval = setInterval(goToNext, 5000);
-                });
-            }
-        });
-    </script>
-
-    <!-- Update JavaScript to handle app carousel -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get carousel elements
-            const deviceScreen = document.querySelector('.app-carousel-showcase .device-screen');
-            const featureContainer = document.querySelector('.app-carousel-showcase .feature-container');
-            const dots = document.querySelectorAll('.carousel-dot');
-            
-            // Create arrays for images and features
-            const screenshots = Array.from(deviceScreen.querySelectorAll('.app-screenshot'));
-            const features = Array.from(featureContainer.querySelectorAll('.carousel-feature'));
-            
-            let currentIndex = 0;
-            
-            // Touch variables
-            let touchStartX = 0;
-            let touchEndX = 0;
-            
-            // Function to update carousel with no transitions
-            function updateCarousel(index) {
-                // Set current index
-                currentIndex = index;
-                
-                // Update screenshots
-                screenshots.forEach((screenshot, i) => {
-                    if (i === currentIndex) {
-                        screenshot.style.display = 'block';
-                    } else {
-                        screenshot.style.display = 'none';
-                    }
-                });
-                
-                // Update features - completely remove and reinsert to prevent transition issues
-                // First remove all features from DOM
-                features.forEach(feature => {
-                    if (feature.parentNode) {
-                        feature.parentNode.removeChild(feature);
-                    }
-                });
-                
-                // Then insert just the active one
-                if (features[currentIndex]) {
-                    featureContainer.appendChild(features[currentIndex]);
-                }
-                
-                // Update dots
-                dots.forEach((dot, i) => {
-                    if (i === currentIndex) {
-                        dot.classList.add('active');
-                    } else {
-                        dot.classList.remove('active');
-                    }
-                });
-            }
-            
-            // Set up dot navigation
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', function() {
-                    updateCarousel(index);
-                });
-            });
-            
-            // Add touch event listeners for swipe support
-            const deviceContainer = document.querySelector('.device-container');
-            if (deviceContainer) {
-                deviceContainer.addEventListener('touchstart', function(e) {
-                    touchStartX = e.changedTouches[0].screenX;
-                }, false);
-                
-                deviceContainer.addEventListener('touchend', function(e) {
-                    touchEndX = e.changedTouches[0].screenX;
-                    handleSwipe();
-                }, false);
-            }
-            
-            // Handle swipe direction
-            function handleSwipe() {
-                const swipeThreshold = 50; // Minimum distance for a swipe
-                if (touchEndX < touchStartX - swipeThreshold) {
-                    // Swipe left (next)
-                    let nextIndex = currentIndex + 1;
-                    if (nextIndex >= screenshots.length) nextIndex = 0;
-                    updateCarousel(nextIndex);
-                } else if (touchEndX > touchStartX + swipeThreshold) {
-                    // Swipe right (previous)
-                    let prevIndex = currentIndex - 1;
-                    if (prevIndex < 0) prevIndex = screenshots.length - 1;
-                    updateCarousel(prevIndex);
-                }
-            }
-            
-            // Initialize with first item
-            updateCarousel(0);
-        });
-    </script>
-
-    <!-- Add carousel fix script to end of body -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Reset all carousel items
-            const carouselInit = function() {
-                const screenshots = document.querySelectorAll('.app-screenshot');
-                const features = document.querySelectorAll('.carousel-feature');
-                const dots = document.querySelectorAll('.carousel-dot');
-                
-                // Reset all items
-                screenshots.forEach((screenshot) => {
-                    screenshot.classList.remove('active');
-                });
-                
-                features.forEach((feature) => {
-                    feature.classList.remove('active');
-                });
-                
-                dots.forEach((dot) => {
-                    dot.classList.remove('active');
-                });
-                
-                // Make first items active
-                screenshots[0].classList.add('active');
-                features[0].classList.add('active');
-                dots[0].classList.add('active');
-            };
-            
-            // Initialize on page load
-            carouselInit();
-        });
-    </script>
-
-    <!-- Add scroll reveal animation functionality -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if IntersectionObserver is supported
-            if ('IntersectionObserver' in window) {
-                // Select all sections that should be animated on scroll
-                const sections = document.querySelectorAll('.reveal-section');
-                
-                // Create the observer options
-                const options = {
-                    root: null, // Use the viewport as the root
-                    rootMargin: '0px', // No margin
-                    threshold: 0.15 // Trigger when 15% of the element is visible
-                };
-                
-                // Create the observer
-                const observer = new IntersectionObserver(function(entries, observer) {
-                    entries.forEach(entry => {
-                        // If the element is in the viewport
-                        if (entry.isIntersecting) {
-                            // Add the active class to start the animation
-                            entry.target.classList.add('active');
-                            // Once it's been animated, no need to observe it anymore
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, options);
-                
-                // Start observing each section
-                sections.forEach(section => {
-                    observer.observe(section);
-                });
-            } else {
-                // Fallback for browsers that don't support IntersectionObserver
-                const sections = document.querySelectorAll('.reveal-section');
-                sections.forEach(section => {
-                    section.classList.add('active');
-                });
-            }
-            
-            // Add animation for comparison columns
-            const comparisonColumns = document.querySelectorAll('.comparison-column');
-            
-            const comparisonObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        // Add delay based on index (the second column appears slightly after the first)
-                        setTimeout(() => {
-                            entry.target.classList.add('animate-in');
-                        }, index * 200); // 200ms delay between columns
-                        comparisonObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.2 });
-            
-            comparisonColumns.forEach(column => {
-                column.classList.add('pre-animation');
-                comparisonObserver.observe(column);
-            });
-            
-            // Add animation for comparison note
-            const comparisonNote = document.querySelector('.comparison-note');
-            if (comparisonNote) {
-                comparisonNote.classList.add('pre-animation');
-                
-                const noteObserver = new IntersectionObserver((entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            setTimeout(() => {
-                                entry.target.classList.add('animate-in');
-                            }, 400); // Add a delay after the columns
-                            noteObserver.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.5 });
-                
-                noteObserver.observe(comparisonNote);
-            }
-            
-            // Add animation for FAQ items
-            const faqItems = document.querySelectorAll('.faq-item');
-            
-            const faqObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        // Add delay based on index
-                        setTimeout(() => {
-                            entry.target.classList.add('animate-in');
-                        }, index * 100); // 100ms delay between each FAQ item
-                        faqObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            faqItems.forEach(item => {
-                item.classList.add('pre-animation');
-                faqObserver.observe(item);
-            });
-        });
-    </script>
-    
     <!-- App Feature Carousel functionality -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -3120,45 +3561,77 @@
             let currentIndex = 0;
             const maxIndex = screenshots.length - 1;
             let carouselInterval;
+            let isAnimating = false; // Flag to prevent rapid clicking
             
-            // Initialize carousel with first feature
+            // Initialize carousel
             function initCarousel() {
-                updateCarousel(0);
+                // Make first items active at start
+                updateCarousel(0, false);
                 startAutoRotation();
             }
             
-            // Function to update carousel display
-            function updateCarousel(index) {
+            // Function to update carousel display with animation handling
+            function updateCarousel(index, animate = true) {
+                if (isAnimating) return; // Prevent concurrent animations
+                isAnimating = true;
+                
                 // Update current index
                 currentIndex = index;
                 
-                // Update screenshots
+                // First hide all screenshots and text containers
                 screenshots.forEach(screenshot => {
-                    if (parseInt(screenshot.dataset.index) === index) {
-                        screenshot.classList.add('active');
-                    } else {
+                    screenshot.style.opacity = '0';
+                    setTimeout(() => {
                         screenshot.classList.remove('active');
-                    }
+                    }, animate ? 300 : 0);
                 });
                 
-                // Update text containers
                 textContainers.forEach(container => {
-                    if (parseInt(container.dataset.index) === index) {
-                        container.classList.add('active');
-                    } else {
+                    container.style.opacity = '0';
+                    setTimeout(() => {
                         container.classList.remove('active');
-                    }
+                    }, animate ? 300 : 0);
                 });
+                
+                // Then show the current ones after a brief delay
+                setTimeout(() => {
+                    // Update screenshots
+                    screenshots.forEach(screenshot => {
+                        if (parseInt(screenshot.dataset.index) === index) {
+                            screenshot.classList.add('active');
+                            setTimeout(() => {
+                                screenshot.style.opacity = '1';
+                            }, 50);
+                        }
+                    });
+                    
+                    // Update text containers
+                    textContainers.forEach(container => {
+                        if (parseInt(container.dataset.index) === index) {
+                            container.classList.add('active');
+                            setTimeout(() => {
+                                container.style.opacity = '1';
+                            }, 50);
+                        }
+                    });
+                    
+                    // Allow animations again after transition completes
+                    setTimeout(() => {
+                        isAnimating = false;
+                    }, animate ? 500 : 0);
+                }, animate ? 300 : 0);
             }
             
             // Navigation functions
             function goToPrev() {
+                if (isAnimating) return; // Prevent rapid clicking
                 const newIndex = currentIndex === 0 ? maxIndex : currentIndex - 1;
                 updateCarousel(newIndex);
                 restartAutoRotation();
             }
             
             function goToNext() {
+                if (isAnimating) return; // Prevent rapid clicking
                 const newIndex = currentIndex === maxIndex ? 0 : currentIndex + 1;
                 updateCarousel(newIndex);
                 restartAutoRotation();
@@ -3171,7 +3644,13 @@
                     clearInterval(carouselInterval);
                 }
                 // Start a new interval
-                carouselInterval = setInterval(goToNext, 6000); // 6 seconds per feature
+                const isMobile = window.innerWidth <= 900;
+                const rotationTime = isMobile ? 4000 : 6000; // 4 seconds on mobile, 6 on desktop
+                carouselInterval = setInterval(() => {
+                    if (!isAnimating) { // Only auto-advance if not currently animating
+                        goToNext();
+                    }
+                }, rotationTime);
             }
             
             function restartAutoRotation() {
@@ -3181,37 +3660,35 @@
             
             // Set up navigation event listeners
             if (prevBtn) {
-                prevBtn.addEventListener('click', goToPrev);
+                prevBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    goToPrev();
+                });
             }
             
             if (nextBtn) {
-                nextBtn.addEventListener('click', goToNext);
+                nextBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    goToNext();
+                });
             }
             
             // Touch events for swipe support
             let touchStartX = 0;
             let touchEndX = 0;
             
-            const carousel = document.querySelector('.app-feature-carousel');
+            const deviceFrame = document.querySelector('.device-frame');
             
-            if (carousel) {
-                carousel.addEventListener('touchstart', function(e) {
+            if (deviceFrame) {
+                deviceFrame.addEventListener('touchstart', function(e) {
                     touchStartX = e.changedTouches[0].screenX;
                 }, {passive: true});
                 
-                carousel.addEventListener('touchend', function(e) {
+                deviceFrame.addEventListener('touchend', function(e) {
+                    if (isAnimating) return; // Prevent rapid swiping
                     touchEndX = e.changedTouches[0].screenX;
                     handleSwipe();
                 }, {passive: true});
-                
-                // Pause auto-rotation when interacting
-                carousel.addEventListener('mouseenter', () => {
-                    clearInterval(carouselInterval);
-                });
-                
-                carousel.addEventListener('mouseleave', () => {
-                    startAutoRotation();
-                });
             }
             
             function handleSwipe() {
@@ -3225,14 +3702,22 @@
                 }
             }
             
+            // Update auto-rotation interval on window resize
+            window.addEventListener('resize', function() {
+                restartAutoRotation();
+            });
+            
+            // Add transition styles for smoother animation
+            screenshots.forEach(screenshot => {
+                screenshot.style.transition = 'opacity 0.5s ease';
+            });
+            
+            textContainers.forEach(container => {
+                container.style.transition = 'opacity 0.5s ease';
+            });
+            
             // Initialize the carousel
             initCarousel();
-            
-            // Make first screenshot and text visible initially
-            if (screenshots.length > 0) {
-                screenshots[0].classList.add('active');
-                textContainers[0].classList.add('active');
-            }
         });
     </script>
 </body>
