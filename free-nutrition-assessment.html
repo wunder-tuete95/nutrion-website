@@ -61,7 +61,7 @@
         .hero {
             position: relative;
             overflow: hidden;
-            padding: 100px 0 90px; /* Reduced top padding from 150px to 120px */
+            padding: 60px 0 90px; /* Reduced top padding from 100px to 60px */
             background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.35)), url('https://storage.googleapis.com/nutrion-website-images/client_profile/Nia_fighting.avif');
             background-size: cover;
             background-position: center top;
@@ -134,7 +134,7 @@
         }
         
         .hero-headline {
-            font-size: 56px; /* Increased from 52px to 56px */
+            font-size: 48px; /* Reduced from 56px to 48px for better balance */
             font-weight: 800;
             line-height: 1.1;
             color: var(--white);
@@ -441,7 +441,7 @@
         
         @media (max-width: 900px) {
             .hero {
-                padding: 100px 0 70px; /* Reduced from 120px to 100px */
+                padding: 60px 0 70px; /* Reduced from 100px to 60px to match desktop reduction */
                 background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.7)), url('https://storage.googleapis.com/nutrion-website-images/client_profile/Nia_fighting.avif');
                 background-size: cover;
                 background-position: left center; /* Focus on left side of image on mobile */
@@ -502,7 +502,7 @@
             }
             
             .hero-headline {
-                font-size: 36px; /* Increased from 32px */
+                font-size: 32px; /* Consistent mobile headline size */
             }
             
             .hero-subheadline {
@@ -510,7 +510,7 @@
             }
             
             .hero-description {
-                font-size: 18px; /* Keep at 18px for mobile */
+                font-size: 16px; /* Slightly smaller on mobile for better readability */
             }
         }
         
@@ -830,10 +830,6 @@
                 border-bottom: 0 !important;
             }
             
-            .hero {
-                padding-top: 120px; /* Adjusted top padding for mobile */
-            }
-            
             .hero-content {
                 align-items: center;
                 text-align: center;
@@ -843,18 +839,6 @@
             
             .hero-text {
                 align-items: center;
-            }
-            
-            .hero-headline {
-                font-size: 50px; /* Increased from 32px to 40px */
-            }
-            
-            .hero-subheadline {
-                font-size: 18px; /* Increased from 18px to 22px */
-            }
-            
-            .hero-description {
-                font-size: 18px; /* Increased from 16px to 18px */
             }
             
             .hero-cta {
@@ -867,12 +851,17 @@
                 text-align: center;
                 padding: 20px;
                 justify-content: center;
-                margin: 0 auto 60px;
+                margin: 0 auto 40px; /* Reduced from 60px to 40px */
             }
             
             .testimonial-banner-avatar {
                 margin-right: 0;
                 margin-bottom: 15px;
+            }
+            
+            .value-item {
+                font-size: 15px; /* Slightly smaller on mobile */
+                margin-bottom: 6px;
             }
             
             .logos-container {
@@ -2135,6 +2124,74 @@
             
             .assessment-credentials p {
                 font-size: 1rem;
+            }
+            
+            .assessment-value-simple p {
+                font-size: 1rem;
+            }
+            
+            /* Mobile styles for assessment value stack */
+            .assessment-value-stack h3 {
+                font-size: 1.2rem !important;
+                margin-bottom: 15px !important;
+                padding: 0 10px;
+            }
+            
+            .assessment-value-stack > div {
+                margin: 0 10px 20px !important;
+                padding: 20px !important;
+            }
+            
+            .assessment-value-stack > div > div {
+                gap: 12px !important;
+            }
+            
+            .assessment-value-stack > div > div > div {
+                padding: 8px 0 !important;
+                font-size: 0.9rem;
+                flex-direction: column;
+                align-items: flex-start !important;
+                gap: 5px;
+            }
+            
+            .assessment-value-stack > div > div > div:last-child {
+                font-size: 1rem !important;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center !important;
+            }
+            
+            .assessment-value-badges {
+                gap: 10px !important;
+                margin-bottom: 20px !important;
+                padding: 0 10px;
+            }
+            
+            .value-badge {
+                font-size: 0.8rem !important;
+                padding: 5px 12px !important;
+            }
+            
+            .assessment-footer > div:nth-child(3) {
+                margin: 20px 10px !important;
+                padding: 15px !important;
+            }
+            
+            .assessment-footer > div:nth-child(3) h4 {
+                font-size: 1.1rem !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .assessment-footer > div:nth-child(3) p {
+                font-size: 0.9rem !important;
+            }
+            
+            .assessment-final-note {
+                padding: 0 10px;
+            }
+            
+            .assessment-final-note p {
+                font-size: 0.85rem !important;
             }
         }
 
